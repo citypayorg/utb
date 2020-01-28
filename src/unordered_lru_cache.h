@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Dash Core developers
+// Copyright (c) 2019 The Ctp Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DASH_UNORDERED_LRU_CACHE_H
-#define DASH_UNORDERED_LRU_CACHE_H
+#ifndef CTP_UNORDERED_LRU_CACHE_H
+#define CTP_UNORDERED_LRU_CACHE_H
 
 #include <unordered_map>
 
@@ -107,4 +107,4 @@ private:
     }
 };
 
-#endif // DASH_UNORDERED_LRU_CACHE_H
+#endif // CTP_UNORDERED_LRU_CACHE_H

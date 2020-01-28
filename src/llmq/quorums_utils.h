@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Dash Core developers
+// Copyright (c) 2018-2019 The Ctp Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DASH_QUORUMS_UTILS_H
-#define DASH_QUORUMS_UTILS_H
+#ifndef CTP_QUORUMS_UTILS_H
+#define CTP_QUORUMS_UTILS_H
 
 #include "consensus/params.h"
 #include "net.h"
@@ -69,4 +69,4 @@ public:
 
 }
 
-#endif//DASH_QUORUMS_UTILS_H
+#endif//CTP_QUORUMS_UTILS_H

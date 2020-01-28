@@ -1,9 +1,9 @@
-// Copyright (c) 2014-2018 The Dash Core developers
+// Copyright (c) 2014-2018 The Ctp Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DASH_STACKTRACES_H
-#define DASH_STACKTRACES_H
+#ifndef CTP_STACKTRACES_H
+#define CTP_STACKTRACES_H
 
 #include <string>
 #include <sstream>
@@ -41,4 +41,4 @@ inline std::string GetExceptionWhat(const T& e)
 void RegisterPrettyTerminateHander();
 void RegisterPrettySignalHandlers();
 
-#endif//DASH_STACKTRACES_H
+#endif//CTP_STACKTRACES_H

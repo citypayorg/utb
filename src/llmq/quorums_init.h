@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Dash Core developers
+// Copyright (c) 2018-2019 The Ctp Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DASH_QUORUMS_INIT_H
-#define DASH_QUORUMS_INIT_H
+#ifndef CTP_QUORUMS_INIT_H
+#define CTP_QUORUMS_INIT_H
 
 class CDBWrapper;
 class CEvoDB;
@@ -25,4 +25,4 @@ void StopLLMQSystem();
 void InterruptLLMQSystem();
 }
 
-#endif //DASH_QUORUMS_INIT_H
+#endif //CTP_QUORUMS_INIT_H

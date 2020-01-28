@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The Dash Core developers
+# Copyright (c) 2018 The Ctp Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 from test_framework.mininode import *
-from test_framework.test_framework import DashTestFramework
+from test_framework.test_framework import CtpTestFramework
 from test_framework.util import *
 from time import *
 
@@ -21,7 +21,7 @@ Also checks that this functionality doesn't influence regular InstantSend
 transactions with high fee. 
 '''
 
-class AutoInstantSendTest(DashTestFramework):
+class AutoInstantSendTest(CtpTestFramework):
     def __init__(self):
         super().__init__(8, 5, [], fast_dip3_enforcement=True)
         # set sender,  receiver,  isolated nodes

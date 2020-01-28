@@ -1,8 +1,8 @@
-// Copyright (c) 2014-2018 The Dash Core developers
+// Copyright (c) 2014-2018 The Ctp Core developers
 
 #include "cachemap.h"
 
-#include "test/test_dash.h"
+#include "test/test_ctp.h"
 
 #include <boost/test/unit_test.hpp>
 

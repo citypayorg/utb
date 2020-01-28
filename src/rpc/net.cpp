@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2018 The Dash Core developers
+// Copyright (c) 2014-2018 The Ctp Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -90,7 +90,7 @@ UniValue getpeerinfo(const JSONRPCRequest& request)
             "    \"minping\": n,              (numeric) minimum observed ping time (if any at all)\n"
             "    \"pingwait\": n,             (numeric) ping wait (if non-zero)\n"
             "    \"version\": v,              (numeric) The peer version, such as 7001\n"
-            "    \"subver\": \"/Dash Core:x.x.x/\",  (string) The string version\n"
+            "    \"subver\": \"/Ctp Core:x.x.x/\",  (string) The string version\n"
             "    \"inbound\": true|false,     (boolean) Inbound (true) or Outbound (false)\n"
             "    \"addnode\": true|false,     (boolean) Whether connection was due to addnode and is using an addnode slot\n"
             "    \"startingheight\": n,       (numeric) The starting height (block) of the peer\n"
@@ -203,8 +203,8 @@ UniValue addnode(const JSONRPCRequest& request)
             "1. \"node\"     (string, required) The node (see getpeerinfo for nodes)\n"
             "2. \"command\"  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once\n"
             "\nExamples:\n"
-            + HelpExampleCli("addnode", "\"192.168.0.6:9999\" \"onetry\"")
-            + HelpExampleRpc("addnode", "\"192.168.0.6:9999\", \"onetry\"")
+            + HelpExampleCli("addnode", "\"112.157.65.160:39999\" \"onetry\"")
+            + HelpExampleRpc("addnode", "\"112.157.65.160:39999\", \"onetry\"")
         );
 
     if(!g_connman)
@@ -242,8 +242,8 @@ UniValue disconnectnode(const JSONRPCRequest& request)
             "\nArguments:\n"
             "1. \"address\"     (string, required) The IP address/port of the node\n"
             "\nExamples:\n"
-            + HelpExampleCli("disconnectnode", "\"192.168.0.6:9999\"")
-            + HelpExampleRpc("disconnectnode", "\"192.168.0.6:9999\"")
+            + HelpExampleCli("disconnectnode", "\"112.157.65.160:39999\"")
+            + HelpExampleRpc("disconnectnode", "\"112.157.65.160:39999\"")
         );
 
     if(!g_connman)
@@ -268,11 +268,11 @@ UniValue getaddednodeinfo(const JSONRPCRequest& request)
             "\nResult:\n"
             "[\n"
             "  {\n"
-            "    \"addednode\" : \"192.168.0.201\",   (string) The node ip address or name (as provided to addnode)\n"
+            "    \"addednode\" : \"112.157.65.160\",   (string) The node ip address or name (as provided to addnode)\n"
             "    \"connected\" : true|false,          (boolean) If connected\n"
             "    \"addresses\" : [                    (list of objects) Only when connected = true\n"
             "       {\n"
-            "         \"address\" : \"192.168.0.201:9999\",  (string) The dash server IP and port we're connected to\n"
+            "         \"address\" : \"112.157.65.160:39999\",  (string) The ctp server IP and port we're connected to\n"
             "         \"connected\" : \"outbound\"           (string) connection, inbound or outbound\n"
             "       }\n"
             "     ]\n"
@@ -281,8 +281,8 @@ UniValue getaddednodeinfo(const JSONRPCRequest& request)
             "]\n"
             "\nExamples:\n"
             + HelpExampleCli("getaddednodeinfo", "")
-            + HelpExampleCli("getaddednodeinfo", "\"192.168.0.201\"")
-            + HelpExampleRpc("getaddednodeinfo", "\"192.168.0.201\"")
+            + HelpExampleCli("getaddednodeinfo", "\"112.157.65.160\"")
+            + HelpExampleRpc("getaddednodeinfo", "\"112.157.65.160\"")
         );
 
     if(!g_connman)
@@ -399,7 +399,7 @@ UniValue getnetworkinfo(const JSONRPCRequest& request)
             "\nResult:\n"
             "{\n"
             "  \"version\": xxxxx,                      (numeric) the server version\n"
-            "  \"subversion\": \"/Dash Core:x.x.x/\",     (string) the server subversion string\n"
+            "  \"subversion\": \"/Ctp Core:x.x.x/\",     (string) the server subversion string\n"
             "  \"protocolversion\": xxxxx,              (numeric) the protocol version\n"
             "  \"localservices\": \"xxxxxxxxxxxxxxxx\", (string) the services we offer to the network\n"
             "  \"localrelay\": true|false,              (bool) true if transaction relay is requested from peers\n"
@@ -482,9 +482,9 @@ UniValue setban(const JSONRPCRequest& request)
                             "3. \"bantime\"      (numeric, optional) time in seconds how long (or until when if [absolute] is set) the ip is banned (0 or empty means using the default time of 24h which can also be overwritten by the -bantime startup argument)\n"
                             "4. \"absolute\"     (boolean, optional) If set, the bantime must be a absolute timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
                             "\nExamples:\n"
-                            + HelpExampleCli("setban", "\"192.168.0.6\" \"add\" 86400")
+                            + HelpExampleCli("setban", "\"112.157.65.160\" \"add\" 86400")
                             + HelpExampleCli("setban", "\"192.168.0.0/24\" \"add\"")
-                            + HelpExampleRpc("setban", "\"192.168.0.6\", \"add\", 86400")
+                            + HelpExampleRpc("setban", "\"112.157.65.160\", \"add\", 86400")
                             );
     if(!g_connman)
         throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");

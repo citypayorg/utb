@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2018 The Dash Core developers
+# Copyright (c) 2015-2018 The Ctp Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 from collections import namedtuple
 
 from test_framework.mininode import *
-from test_framework.test_framework import DashTestFramework
+from test_framework.test_framework import CtpTestFramework
 from test_framework.util import *
 from time import *
 
@@ -37,7 +37,7 @@ class TestNode(SingleNodeConnCB):
         return self.last_mnlistdiff
 
 
-class LLMQCoinbaseCommitmentsTest(DashTestFramework):
+class LLMQCoinbaseCommitmentsTest(CtpTestFramework):
     def __init__(self):
         super().__init__(6, 5, [], fast_dip3_enforcement=True)
 
@@ -56,7 +56,7 @@ class LLMQCoinbaseCommitmentsTest(DashTestFramework):
         mnList = self.test_getmnlistdiff(null_hash, self.nodes[0].getbestblockhash(), {}, [], expectedUpdated)
         expectedUpdated2 = expectedUpdated + []
 
-        # Register one more MN, but don't start it (that would fail as DashTestFramework doesn't support this atm)
+        # Register one more MN, but don't start it (that would fail as CtpTestFramework doesn't support this atm)
         baseBlockHash = self.nodes[0].getbestblockhash()
         self.prepare_masternode(self.mn_count)
         new_mn = self.mninfo[self.mn_count]

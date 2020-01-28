@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2018 The Dash Core developers
+# Copyright (c) 2015-2018 The Ctp Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import DashTestFramework
+from test_framework.test_framework import CtpTestFramework
 from test_framework.util import *
 
 '''
@@ -13,7 +13,7 @@ Simulate and check DKG errors
 
 '''
 
-class LLMQDKGErrors(DashTestFramework):
+class LLMQDKGErrors(CtpTestFramework):
     def __init__(self):
         super().__init__(6, 5, [], fast_dip3_enforcement=True)
 
