@@ -77,8 +77,8 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Wired 09/Jan/2014 The Grand Experiment Goes Live: Overstock.com Is Now Accepting Bitcoins";
-    const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+    const char* pszTimestamp = "The Times 2019-09-19 i worked CitiBank but CityPay.org is different for banking Service";
+    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -283,16 +283,17 @@ public:
         pchMessageStart[1] = 0x0c;
         pchMessageStart[2] = 0x6b;
         pchMessageStart[3] = 0xbd;
-        vAlertPubKey = ParseHex("048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103");
+        vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
         nDefaultPort = 39999;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1390095618, 28917698, 0x1e0ffff0, 1, 50 * COIN);
+        // genesis = CreateGenesisBlock(1390095618, 28917698, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1568851200, 28917698, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"));
-        //assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
-        assert(consensus.hashGenesisBlock == uint256S("0x000001a02b194162a5b3cd34df4cc599da5e50b26ce6534162b626e5acd908bc"));
-        assert(genesis.hashMerkleRoot == uint256S("0xc000f54ff0adebcbcb8ebb3a8b4780b5ad78df3119553848d335b11155dc66eb"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000020b6fab01c33b069c37bbc09b28af7416592dbbd515c44ba76aa450dabb"));
+        assert(genesis.hashMerkleRoot == uint256S("0xda30f164fa0003a5e39a1be07f7c7c3d17f83f6539451b263365c1badfa728ef"));
+        //assert(consensus.hashGenesisBlock == uint256S("0x000001a02b194162a5b3cd34df4cc599da5e50b26ce6534162b626e5acd908bc"));
+        //assert(genesis.hashMerkleRoot == uint256S("0xc000f54ff0adebcbcb8ebb3a8b4780b5ad78df3119553848d335b11155dc66eb"));
 
         vSeeds.push_back(CDNSSeedData("citypay.org", "dnsseed.citypay.org"));
         //vSeeds.push_back(CDNSSeedData("ctpdot.io", "dnsseed.ctpdot.io"));
@@ -344,8 +345,8 @@ public:
         };
 
         chainTxData = ChainTxData{
-            1557610432, // * UNIX timestamp of last known number of transactions (Block 1068571)
-            14380723,   // * total number of transactions between genesis and that timestamp
+            1568851200, // * UNIX timestamp of last known number of transactions (Block 1068571)
+            5000,   // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.1         // * estimated number of transactions per second after that timestamp
         };
