@@ -1,6 +1,17 @@
 WINDOWS BUILD NOTES
 ====================
 
+
+====================
+cd depends
+make HOST=x86_64-w64-mingw32
+cd ..
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+make
+====================
+
+
 Below are some notes on how to build Ctp Core for Windows.
 
 Most developers use cross-compilation from Ubuntu to build executables for
