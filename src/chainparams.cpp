@@ -38,8 +38,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     genesis.nNonce   = nNonce;
     genesis.nVersion = nVersion;
     genesis.vtx.push_back(MakeTransactionRef(std::move(txNew)));
-    //genesis.hashPrevBlock.SetNull();
-    genesis.hashPrevBlock  = uint256S("0x0d1eb10fcdb74cc1bb556b57017cde0fabab6a56371fbcec01a3a90f32357df8");
+    genesis.hashPrevBlock.SetNull();
+    //genesis.hashPrevBlock  = uint256S("0x0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
     genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
 
     LogPrintf("############ CreateGenesisBlock start #############\n");
@@ -278,8 +278,8 @@ public:
         /*This is because you didn't mine the block, i.e. you didn't search for a nonce that results in a block hash less than powLimit 
         (the initial difficulty target) defined in src/chainparams.cpp 
         for mainnet. To do this:*/
-        consensus.powLimit = uint256S("0x0d1eb10fcdb74cc1bb556b57017cde0fabab6a56371fbcec01a3a90f32357df8");
-        //consensus.powLimit = uint256S("0x00"); // ~uint256(0) >> 20
+        //consensus.powLimit = uint256S("0x0d1eb10fcdb74cc1bb556b57017cde0fabab6a56371fbcec01a3a90f32357df8");
+        consensus.powLimit = uint256S("0x00"); // ~uint256(0) >> 20
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ctp: 1 day
         consensus.nPowTargetSpacing = 2.5 * 60; // Ctp: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -366,7 +366,7 @@ LogPrintf("genesis.hashPrevBlock: %s\n", genesis.hashPrevBlock.ToString().c_str(
 LogPrintf("genesis.nTime = %u \n", genesis.nTime);
 LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
 LogPrintf("########### CMainParams() main end ##############\n");
-        assert(consensus.hashGenesisBlock == uint256S("0x93a8e7ec0eef68f0b5bf5ce58a440ada569b9692123c13f4f666cf77aa662e34"));
+        assert(consensus.hashGenesisBlock == uint256S("0x454f0cea4902c6dbb636a5ac8141d8dbdb01508d0b5acb0ca7795c8ad1409e0b"));
         assert(genesis.hashMerkleRoot == uint256S("0x0a43c85acdf7dfc60556e20233fc98358e112bbf8bc58d412402f798cc5be8d3"));
 
 
@@ -415,8 +415,8 @@ LogPrintf("########### CMainParams() main end ##############\n");
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x0d1eb10fcdb74cc1bb556b57017cde0fabab6a56371fbcec01a3a90f32357df8"))
-            (  1, uint256S("0x93a8e7ec0eef68f0b5bf5ce58a440ada569b9692123c13f4f666cf77aa662e34"))  // genesis
+            //(  0, uint256S("0x0d1eb10fcdb74cc1bb556b57017cde0fabab6a56371fbcec01a3a90f32357df8"))
+            (  0, uint256S("0x454f0cea4902c6dbb636a5ac8141d8dbdb01508d0b5acb0ca7795c8ad1409e0b"))  // genesis
             // (  1500, uint256S("0x000000aaf0300f59f49bc3e970bad15c11f961fe2347accffff19d96ec9778e3"))
             // (  4991, uint256S("0x000000003b01809551952460744d5dbb8fcbd6cbae3c220267bf7fa43f837367"))
             // (  4991, uint256S("0x000003ae7acc081c8e67f892cad9e6893c2ee61749e77c8bc72b4360fcbf2d94"))
@@ -647,8 +647,8 @@ public:
         consensus.DIP0003EnforcementHeight = 2; // DIP0003 activated immediately on devnet
         consensus.DIP0003EnforcementHash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Ctp: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Ctp: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Dash: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Dash: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
@@ -703,33 +703,33 @@ public:
         pchMessageStart[2] = 0xff;
         pchMessageStart[3] = 0xce;
         vAlertPubKey = ParseHex("04517d8a699cb43d3938d7b24faaff7cda448ca4ea267723ba614784de661949bf632d6304316b244646dea079735b9a6fc4af804efb4752075b9fe2245e14e412");
-        nDefaultPort = 29999;
+        nDefaultPort = 19999;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1580571756, 1, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1417713337, 1096447, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"));
-        assert(genesis.hashMerkleRoot == uint256S("0x0a43c85acdf7dfc60556e20233fc98358e112bbf8bc58d412402f798cc5be8d3"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
 
         devnetGenesis = FindDevNetGenesisBlock(consensus, genesis, 50 * COIN);
         consensus.hashDevnetGenesisBlock = devnetGenesis.GetHash();
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("ctpevo.org",  "devnet-seed.ctpevo.org"));
+        //vSeeds.push_back(CDNSSeedData("dashevo.org",  "devnet-seed.dashevo.org"));
 
-        // Testnet Ctp addresses start with 'y'
+        // Testnet Dash addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Testnet Ctp script addresses start with '8' or '9'
+        // Testnet Dash script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Ctp BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Dash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Ctp BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Dash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Testnet Ctp BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Dash BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
