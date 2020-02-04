@@ -393,13 +393,13 @@ public:
         // vSeeds.push_back(CDNSSeedData("masternode.io", "dnsseed.masternode.io"));
         genesis = CreateGenesisBlock(1580655600, 30196654, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-LogPrintf("########### CMainParams() main start ##############\n");
-LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-LogPrintf("genesis.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-LogPrintf("genesis.hashPrevBlock: %s\n", genesis.hashPrevBlock.ToString().c_str());
-LogPrintf("genesis.nTime = %u \n", genesis.nTime);
-LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
-LogPrintf("########### CMainParams() main end ##############\n");
+// LogPrintf("########### CMainParams() main start ##############\n");
+// LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+// LogPrintf("genesis.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+// LogPrintf("genesis.hashPrevBlock: %s\n", genesis.hashPrevBlock.ToString().c_str());
+// LogPrintf("genesis.nTime = %u \n", genesis.nTime);
+// LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
+// LogPrintf("########### CMainParams() main end ##############\n");
         assert(consensus.hashGenesisBlock == uint256S("0x000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419"));
         assert(genesis.hashMerkleRoot     == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
 
@@ -440,7 +440,7 @@ LogPrintf("########### CMainParams() main end ##############\n");
         nPoolMaxParticipants = 5;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"Xgtyuk76vhuFW2iT7UAiHgNdWXCf3J34wh"};
+        vSporkAddresses = {"XmecmkhzDdKUaiLDas1FbkfSMWQPAzE3mx"};
         nMinSporkKeys = 1;
         fBIP9CheckMasternodesUpgraded = true;
 
