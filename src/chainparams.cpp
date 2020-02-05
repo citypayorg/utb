@@ -42,23 +42,23 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     //genesis.hashPrevBlock  = uint256S("0x0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
     genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
 
-    LogPrintf("############ CreateGenesisBlock start #############\n");
-    LogPrintf("genesis.GetHash = %s \n", genesis.GetHash);
-    LogPrintf("pszTimestamp = %s \n", pszTimestamp);
+    // LogPrintf("############ CreateGenesisBlock start #############\n");
+    // LogPrintf("genesis.GetHash = %s \n", genesis.GetHash);
+    // LogPrintf("pszTimestamp = %s \n", pszTimestamp);
     
-    //LogPrintf("genesisOutputScript = %s \n", genesisOutputScript);
-    LogPrintf("nTime = %u \n", nTime);
-    LogPrintf("nNonce = %u \n", nNonce);
-    LogPrintf("nBits = %u \n", nBits);
-    LogPrintf("nVersion = %u \n", nVersion);
-    LogPrintf("genesisReward = %u \n", genesisReward);
-    //LogPrintf("genesisReward = %s \n", genesisReward);
-    //LogPrintf("genesis.hash? = %s \n", txNew.vout[0].nValue);
-    LogPrintf("genesis.nTime = %u \n", genesis.nTime);
-    LogPrintf("genesis.nBits = %s \n", genesis.nBits);
-    LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
-    //LogPrintf("genesis.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-    LogPrintf("############ CreateGenesisBlock end #############\n");
+    // //LogPrintf("genesisOutputScript = %s \n", genesisOutputScript);
+    // LogPrintf("nTime = %u \n", nTime);
+    // LogPrintf("nNonce = %u \n", nNonce);
+    // LogPrintf("nBits = %u \n", nBits);
+    // LogPrintf("nVersion = %u \n", nVersion);
+    // LogPrintf("genesisReward = %u \n", genesisReward);
+    // //LogPrintf("genesisReward = %s \n", genesisReward);
+    // //LogPrintf("genesis.hash? = %s \n", txNew.vout[0].nValue);
+    // LogPrintf("genesis.nTime = %u \n", genesis.nTime);
+    // LogPrintf("genesis.nBits = %s \n", genesis.nBits);
+    // LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
+    // //LogPrintf("genesis.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+    // LogPrintf("############ CreateGenesisBlock end #############\n");
 
     return genesis;
 }
@@ -553,9 +553,9 @@ public:
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1580569200UL, 28917698UL, 0x1e0ffff0, 1, 50 * COIN);
-LogPrintf("########### CTestNetParams() main start ##############\n");
-LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-LogPrintf("########### CTestNetParams() main end ##############\n");
+// LogPrintf("########### CTestNetParams() main start ##############\n");
+// LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+// LogPrintf("########### CTestNetParams() main end ##############\n");
 
         consensus.hashGenesisBlock = genesis.GetHash();
         //assert(consensus.hashGenesisBlock == uint256S("0x00000844645831821cda4e384ba3282f9e0a7a3c3a133d23aaa2dbf504f92c88"));

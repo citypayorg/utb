@@ -1,3 +1,25 @@
+/*
+----------------- 64 bit ----------------------------
+git clone https://github.com/citypayorg/citypay
+cd citypay
+cd depends
+make HOST=x86_64-w64-mingw32 -j4
+#make HOST=x86_64-pc-linux-gnu -j4
+cd ..
+./autogen.sh # not required when building from tarball
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+#CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
+make
+-----------------------------------------------------
+- `i686-pc-linux-gnu` for Linux32
+- `x86_64-pc-linux-gnu` for Linux64 
+- `i686-w64-mingw32` for Win32
+- `x86_64-w64-mingw32` for Win64
+- `x86_64-apple-darwin11` for MacOSX
+- `arm-linux-gnueabihf` for Linux ARM 32 bit
+- `aarch64-linux-gnu` for Linux ARM 64 bit
+*/
+
 https://bitcointalk.org/index.php?topic=189350.msg2035449#msg2035449
 -------------------------------------------------------------------
 
