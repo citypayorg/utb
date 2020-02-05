@@ -1,8 +1,8 @@
 Source: ctp
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@ctp.org>
-Uploaders: Holger Schinzel <holger@ctp.org>
+Maintainer: Holger Schinzel <holger@citypay.org>
+Uploaders: Holger Schinzel <holger@citypay.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -26,7 +26,7 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://www.ctp.org/
+Homepage: https://www.citypay.org/
 Vcs-Git: git://github.com/ctppay/ctp.git
 Vcs-Browser: https://github.com/ctppay/ctp
 

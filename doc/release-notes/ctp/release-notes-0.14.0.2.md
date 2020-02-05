@@ -1,11 +1,11 @@
-Ctp Core version 0.13.3.0
+Ctp Core version 0.14.0.2
 ==========================
 
 Release is now available from:
 
-  <https://www.ctp.org/downloads/#wallets>
+  <https://www.citypay.org/downloads/#wallets>
 
-This is a new minor version release, bringing various bugfixes and other improvements.
+This is a new minor version release, bringing various bugfixes.
 
 Please report bugs using the issue tracker at github:
 
@@ -21,70 +21,61 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Ctp-Qt (on Mac) or
-ctpd/ctp-qt (on Linux). If you upgrade after DIP0003 activation you will
-have to reindex (start with -reindex-chainstate or -reindex) to make sure
-your wallet has all the new data synced (only if you were using version < 0.13).
-
-As spork15 has been activated on mainnet, there is no need for `masternode start`
-anymore. Upgrading a masternode now only involves replacing binaries and restarting
-the node.
+ctpd/ctp-qt (on Linux). If you upgrade after DIP0003 activation and you were
+using version < 0.13 you will have to reindex (start with -reindex-chainstate
+or -reindex) to make sure your wallet has all the new data synced. Upgrading from
+version 0.13 should not require any additional actions.
 
 Downgrade warning
 -----------------
 
-### Downgrade to a version < 0.13.0.0
+### Downgrade to a version < 0.14.0.0
 
-Downgrading to a version smaller than 0.13 is not supported anymore as DIP2/DIP3 has activated
-on mainnet and testnet.
+Downgrading to a version smaller than 0.14 is not supported anymore as DIP8 has
+activated on mainnet and testnet.
 
-### Downgrade to a version < 0.13.3.0
+### Downgrade to versions 0.14.0.0 - 0.14.0.1
 
-Downgrading to previous 0.13 releases is fully supported but is not recommended unless you have some serious issues with 0.13.3.0.
+Downgrading to older 0.14 releases is fully supported but is not
+recommended unless you have some serious issues with version 0.14.0.2.
 
 Notable changes
 ===============
 
-Number of false-positives from anti virus software should be reduced
---------------------------------------------------------------------
-We have removed all mining code from Windows and Mac binaries, which should avoid most of the false-positive alerts
-from anti virus software. Linux builds are not affected. The mining code found in `ctp-qt` and `ctpd` are only meant
-for regression/integration tests and devnets, so there is no harm in removing this code from non-linux builds.
+Performance improvements
+------------------------
+Slow startup times were observed in older versions. This was due to sub-optimal handling of old
+deterministic masternode lists which caused the loading of too many lists into memory. This should be
+fixed now.
 
-Fixed an issue with invalid merkle blocks causing SPV nodes to ban other nodes
-------------------------------------------------------------------------------
-A fix that was introduces in the last minor version caused creation of invalid merkle blocks, which in turn cause SPV
-nodes to ban 0.13.2 nodes. This can be observed on mobile clients which have troubles maintaining connections. This
-release fixes this issue and should allow SPV/mobile clients to sync with upgraded nodes.
+Fixed excessive memory use
+--------------------------
+Multiple issues were found which caused excessive use of memory in some situations, especially when
+a full reindex was performed, causing the node to crash even when enough RAM was available. This should
+be fixed now.
 
-Hardened spork15 value to 1047200
----------------------------------
-We've hardened the spork15 block height to 1047200, which makes sure that syncing from scratch will always work, no
-matter if spork15 is received in-time or not.
+Fixed out-of-sync masternode list UI
+------------------------------------
+The masternode tab, which shows the masternode list, was not always up-to-date as it missed some internal
+updates. This should be fixed now.
 
-Bug fixes/Other improvements
-----------------------------
-There are few bug fixes in this release:
-- Fixed an issue with transaction sometimes not being fully zapped when `-zapwallettxes` is used
-- Fixed an issue with the `protx revoke` RPC and REASON_CHANGE_OF_KEYS
-
- 0.13.3.0 Change log
+0.14.0.2 Change log
 ===================
 
-See detailed [set of changes](https://github.com/ctppay/ctp/compare/v0.13.2.0...ctppay:v0.13.3.0).
+See detailed [set of changes](https://github.com/ctppay/ctp/compare/v0.14.0.1...ctppay:v0.14.0.2).
 
-### Backports
-
-- [`575cafc01`](https://github.com/ctppay/ctp/commit/575cafc01) Do not skip pushing of vMatch and vHashes in CMerkleBlock (#2826)
-- [`8c58799d8`](https://github.com/ctppay/ctp/commit/8c58799d8) There can be no two votes which differ by the outcome only (#2819)
-- [`66c2f3953`](https://github.com/ctppay/ctp/commit/66c2f3953) Fix vote ratecheck (#2813)
-- [`b52d0ad19`](https://github.com/ctppay/ctp/commit/b52d0ad19) Fix revoke reason check for ProUpRevTx (#2787)
-- [`35914e084`](https://github.com/ctppay/ctp/commit/35914e084) Skip mempool.dat when wallet is starting in "zap" mode (#2782)
-- [`46d875100`](https://github.com/ctppay/ctp/commit/46d875100) Disable in-wallet miner for win/macos Travis/Gitian builds (#2778)
-
-### Other
-
-- [`25038ff36`](https://github.com/ctppay/ctp/commit/25038ff36) Bump version to 0.13.3.0
-- [`53b2162e2`](https://github.com/ctppay/ctp/commit/53b2162e2) Harden spork15 value to 1047200 when on mainnet (#2830)
+- [`d2ff63e8d`](https://github.com/ctppay/ctp/commit/d2ff63e8d) Use std::unique_ptr for mnList in CSimplifiedMNList (#3014)
+- [`321bbf5af`](https://github.com/ctppay/ctp/commit/321bbf5af) Fix excessive memory use when flushing chainstate and EvoDB (#3008)
+- [`0410259dd`](https://github.com/ctppay/ctp/commit/0410259dd) Fix 2 common Travis failures which happen when Travis has network issues (#3003)
+- [`8d763c144`](https://github.com/ctppay/ctp/commit/8d763c144) Only load signingActiveQuorumCount + 1 quorums into cache (#3002)
+- [`2dc1b06ec`](https://github.com/ctppay/ctp/commit/2dc1b06ec) Remove skipped denom from the list on tx commit (#2997)
+- [`dff2c851d`](https://github.com/ctppay/ctp/commit/dff2c851d) Update manpages for 0.14.0.2 (#2999)
+- [`46c4f5844`](https://github.com/ctppay/ctp/commit/46c4f5844) Use Travis stages instead of custom timeouts (#2948)
+- [`49c37b82a`](https://github.com/ctppay/ctp/commit/49c37b82a) Back off for 1m when connecting to quorum masternodes (#2975)
+- [`c1f756fd9`](https://github.com/ctppay/ctp/commit/c1f756fd9) Multiple speed optimizations for deterministic MN list handling (#2972)
+- [`11699f540`](https://github.com/ctppay/ctp/commit/11699f540) Process/keep messages/connections from PoSe-banned MNs (#2967)
+- [`c5415e746`](https://github.com/ctppay/ctp/commit/c5415e746) Fix UI masternode list (#2966)
+- [`fb6f0e04d`](https://github.com/ctppay/ctp/commit/fb6f0e04d) Bump version to 0.14.0.2 and copy release notes (#2991)
 
 Credits
 =======
@@ -92,7 +83,6 @@ Credits
 Thanks to everyone who directly contributed to this release:
 
 - Alexander Block (codablock)
-- gladcow
 - UdjinM6
 
 As well as everyone that submitted issues and reviewed pull requests.
@@ -120,6 +110,9 @@ Ctp Core tree 0.12.1.x was a fork of Bitcoin Core tree 0.12.
 
 These release are considered obsolete. Old release notes can be found here:
 
+- [v0.14.0.1](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.14.0.1.md) released May/31/2019
+- [v0.14.0](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.14.0.md) released May/22/2019
+- [v0.13.3](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.13.3.md) released Apr/04/2019
 - [v0.13.2](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.13.2.md) released Mar/15/2019
 - [v0.13.1](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.13.1.md) released Feb/9/2019
 - [v0.13.0](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.13.0.md) released Jan/14/2019

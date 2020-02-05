@@ -52,7 +52,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Ctp"
-#define QAPP_ORG_DOMAIN "ctp.org"
+#define QAPP_ORG_DOMAIN "citypay.org"
 #define QAPP_APP_NAME_DEFAULT "Ctp-Qt"
 #define QAPP_APP_NAME_TESTNET "Ctp-Qt-testnet"
 #define QAPP_APP_NAME_DEVNET "Ctp-Qt-%s"

@@ -3,7 +3,7 @@ Ctp Core version 0.12.3.3
 
 Release is now available from:
 
-  <https://www.ctp.org/downloads/#wallets>
+  <https://www.citypay.org/downloads/#wallets>
 
 This is a critical bugfix release.
 

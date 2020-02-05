@@ -1,12 +1,11 @@
-Ctp Core version 0.12.3.2
+Ctp Core version 0.12.3.4
 ==========================
 
 Release is now available from:
 
-  <https://www.ctp.org/downloads/#wallets>
+  <https://www.citypay.org/downloads/#wallets>
 
-This is a new minor version release, bringing various bugfixes and other
-improvements.
+This is an optional release and only contains changes for testnet. It is not required to update masternodes on mainnet.
 
 Please report bugs using the issue tracker at github:
 
@@ -35,7 +34,7 @@ the database if you decide to use any pre-0.12.2.2 version.
 
 Wallet forward or backward compatibility was not affected.
 
-### Downgrade to 0.12.2.2/3, 0.12.3.1
+### Downgrade to 0.12.3.1/2/3
 
 Downgrading to these versions does not require any additional actions, should be
 fully compatible.
@@ -44,58 +43,29 @@ fully compatible.
 Notable changes
 ===============
 
-Improve initial sync
---------------------
+Fork/Reset testnet at block 4001
+--------------------------------
 
-Some users had problems getting their nodes synced. The issue occured due to nodes trying to
-get additional data from each available peer but not being able to process this data fast enough.
-This was recognized as a stalled sync process and thus the process was reset. To address the issue
-we limited sync process to 3 peers max now and the issue should no longer appear as long as there
-are at least 4 connections.
+This release is NOT required on mainnet. It is intended to be deployed on testnet and will cause a fork at block 4001.
+The plan is to restart all testing for the v0.13.0.0 upgrade process.
 
-Testnet/Devnet fixes
---------------------
+When deployed on testnet, it is required to start with a fresh data directory or call Ctp Core with `-reindex-chainstate`.
 
-Turned out that a low-diff rule for slow blocks backported from Bitcoin works a bit too aggressive for
-a blockchain which uses a dynamic per-block difficulty adjustment algorithm (DGW). While blocks are still
-produced at a more or less constant rate on average, the rate however is way too high.
-
-We also lifted multiple ports restriction on devnet and also incuded other fixes which should improve
-connectivity on devnets which are using nodes with multiple different ports.
-
-
-0.12.3.2 Change log
+0.12.3.4 Change log
 ===================
 
-See detailed [change log](https://github.com/ctppay/ctp/compare/v0.12.3.1...ctppay:v0.12.3.2) below.
+See detailed [set of changes](https://github.com/ctppay/ctp/compare/v0.12.3.3...ctppay:v0.12.3.4).
 
-### Network:
-- [`2474d9cb8`](https://github.com/ctppay/ctp/commit/2474d9cb8) Sync mn list and mnw list from 3 peers max (#2169)
-- [`2c303cdb1`](https://github.com/ctppay/ctp/commit/2c303cdb1) A few devnet related fixes (#2168)
+Python Support
+--------------
 
-### Mining:
-- [`2ba0c7760`](https://github.com/ctppay/ctp/commit/2ba0c7760) Add tests for special rules for slow blocks on devnet/testnet (#2176)
-- [`b9a83d2ae`](https://github.com/ctppay/ctp/commit/b9a83d2ae) Allow mining min diff for very slow (2h+) blocks (#2175)
-- [`050cabdf5`](https://github.com/ctppay/ctp/commit/050cabdf5) Adjust diff for slow testnet/devnet blocks a bit smoother (#2161)
-
-### GUI:
-- [`7b9919d18`](https://github.com/ctppay/ctp/commit/7b9919d18) Fix issues with selections on Masternode tab (#2170)
-- [`c4698d5f3`](https://github.com/ctppay/ctp/commit/c4698d5f3) Make PS Buttons not react to spacebar (#2154)
-
-### Other:
-- [`f833e2ed6`](https://github.com/ctppay/ctp/commit/f833e2ed6) Bump to 0.12.3.2 (#2173)
-
+Support for Python 2 has been discontinued for all test files and tools.
 
 Credits
 =======
 
-Thanks to everyone who directly contributed to this release:
-
-- Alexander Block
-- PaulieD
-- UdjinM6
-
-As well as everyone who submitted issues and reviewed pull requests.
+Thanks to everyone who directly contributed to this release,
+as well as everyone who submitted issues and reviewed pull requests.
 
 
 Older releases
@@ -121,12 +91,14 @@ Ctp Core tree 0.12.1.x was a fork of Bitcoin Core tree 0.12.
 
 These release are considered obsolete. Old release notes can be found here:
 
+- [v0.12.3.3](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.3.3.md) released Sep/19/2018
+- [v0.12.3.2](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.3.2.md) released Jul/09/2018
 - [v0.12.3.1](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.3.1.md) released Jul/03/2018
 - [v0.12.2.3](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.2.3.md) released Jan/12/2018
 - [v0.12.2.2](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.2.2.md) released Dec/17/2017
 - [v0.12.2](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.2.md) released Nov/08/2017
 - [v0.12.1](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.1.md) released Feb/06/2017
-- [v0.12.0](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.0.md) released Jun/15/2015
+- [v0.12.0](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.12.0.md) released Aug/15/2015
 - [v0.11.2](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.11.2.md) released Mar/04/2015
 - [v0.11.1](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.11.1.md) released Feb/10/2015
 - [v0.11.0](https://github.com/ctppay/ctp/blob/master/doc/release-notes/ctp/release-notes-0.11.0.md) released Jan/15/2015

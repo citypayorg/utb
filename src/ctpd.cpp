@@ -33,7 +33,7 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called Ctp (https://www.ctp.org/),
+ * This is the developer documentation of the reference client for an experimental new digital currency called Ctp (https://www.citypay.org/),
  * which enables instant payments to anyone, anywhere in the world. Ctp uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
