@@ -3258,27 +3258,27 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 
 bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW)
 {
-    LogPrintf("########### CheckBlockHeader() validation.cpp start ##############\n");
-    LogPrintf("block.GetHash() = %s\n", block.GetHash().ToString());
-    LogPrintf("consensusParams.hashGenesisBlock = %s\n", consensusParams.hashGenesisBlock.ToString());
-    LogPrintf("consensusParams.hashDevnetGenesisBlock = %s\n", consensusParams.hashDevnetGenesisBlock.ToString());
-    LogPrintf("block.hashPrevBlock = %s\n", block.hashPrevBlock.ToString());
-    LogPrintf("block.nBits = %u\n", block.nBits);
-    LogPrintf("consensusParams.powLimit = %s\n", consensusParams.powLimit.ToString());
-    LogPrintf("fCheckPOW = %u\n", fCheckPOW);
-    LogPrintf("########### CheckBlockHeader() validation.cpp end ##############\n");
+    // LogPrintf("########### CheckBlockHeader() validation.cpp start ##############\n");
+    // LogPrintf("block.GetHash() = %s\n", block.GetHash().ToString());
+    // LogPrintf("consensusParams.hashGenesisBlock = %s\n", consensusParams.hashGenesisBlock.ToString());
+    // LogPrintf("consensusParams.hashDevnetGenesisBlock = %s\n", consensusParams.hashDevnetGenesisBlock.ToString());
+    // LogPrintf("block.hashPrevBlock = %s\n", block.hashPrevBlock.ToString());
+    // LogPrintf("block.nBits = %u\n", block.nBits);
+    // LogPrintf("consensusParams.powLimit = %s\n", consensusParams.powLimit.ToString());
+    // LogPrintf("fCheckPOW = %u\n", fCheckPOW);
+    // LogPrintf("########### CheckBlockHeader() validation.cpp end ##############\n");
 
     // Check proof of work matches claimed amount
     if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
     {
-        LogPrintf("###if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams)) -fail ###\n");
+        // LogPrintf("###if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams)) -fail ###\n");
         return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
     }
     // Check DevNet
     if (!consensusParams.hashDevnetGenesisBlock.IsNull() &&
             block.hashPrevBlock == consensusParams.hashGenesisBlock &&
             block.GetHash() != consensusParams.hashDevnetGenesisBlock) {
-        LogPrintf("### Check DevNet -fail ###\n");
+        // LogPrintf("### Check DevNet -fail ###\n");
         return state.DoS(100, error("CheckBlockHeader(): wrong devnet genesis"),
                          REJECT_INVALID, "devnet-genesis");
     }
