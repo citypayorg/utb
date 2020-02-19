@@ -11,9 +11,9 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubrawtxlock`: publishes the raw transaction when locked via InstantSend
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
 
-This mechanism has been integrated into Bitcore-Node-Ctp which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/ctppay/insight-api-ctp#web-socket-api](https://github.com/ctppay/insight-api-ctp#web-socket-api)
-* API: [https://github.com/ctppay/insight-api-ctp#instantsend-transactions](https://github.com/ctppay/insight-api-ctp#instantsend-transactions)
+This mechanism has been integrated into Bitcore-Node-Utb which allows for notification to be broadcast through Insight API in one of two ways:
+* WebSocket: [https://github.com/utbpay/insight-api-utb#web-socket-api](https://github.com/utbpay/insight-api-utb#web-socket-api)
+* API: [https://github.com/utbpay/insight-api-utb#instantsend-transactions](https://github.com/utbpay/insight-api-utb#instantsend-transactions)
 
 #### Command line option
 

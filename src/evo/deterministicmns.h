@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_DETERMINISTICMNS_H
-#define CTP_DETERMINISTICMNS_H
+#ifndef UTB_DETERMINISTICMNS_H
+#define UTB_DETERMINISTICMNS_H
 
 #include "arith_uint256.h"
 #include "bls/bls.h"
@@ -669,4 +669,4 @@ private:
 
 extern CDeterministicMNManager* deterministicMNManager;
 
-#endif //CTP_DETERMINISTICMNS_H
+#endif //UTB_DETERMINISTICMNS_H

@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 The Ctp Core developers
+// Copyright (c) 2017-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_SIMPLIFIEDMNS_H
-#define CTP_SIMPLIFIEDMNS_H
+#ifndef UTB_SIMPLIFIEDMNS_H
+#define UTB_SIMPLIFIEDMNS_H
 
 #include "bls/bls.h"
 #include "merkleblock.h"
@@ -147,4 +147,4 @@ public:
 
 bool BuildSimplifiedMNListDiff(const uint256& baseBlockHash, const uint256& blockHash, CSimplifiedMNListDiff& mnListDiffRet, std::string& errorRet);
 
-#endif //CTP_SIMPLIFIEDMNS_H
+#endif //UTB_SIMPLIFIEDMNS_H

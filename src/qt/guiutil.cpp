@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -130,7 +130,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Ctp address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a Utb address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
@@ -148,8 +148,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no ctp: URI
-    if(!uri.isValid() || uri.scheme() != QString("ctp"))
+    // return if URI is not valid or is no utb: URI
+    if(!uri.isValid() || uri.scheme() != QString("utb"))
         return false;
 
     SendCoinsRecipient rv;
@@ -198,7 +198,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::CTP, i->second, &rv.amount))
+                if(!BitcoinUnits::parse(BitcoinUnits::UTB, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -218,13 +218,13 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert ctp:// to ctp:
+    // Convert utb:// to utb:
     //
-    //    Cannot handle this later, because ctp:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because utb:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("ctp://", Qt::CaseInsensitive))
+    if(uri.startsWith("utb://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 7, "ctp:");
+        uri.replace(0, 7, "utb:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -232,12 +232,12 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 
 QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("ctp:%1").arg(info.address);
+    QString ret = QString("utb:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::CTP, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::UTB, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -438,7 +438,7 @@ void openConfigfile()
 {
     boost::filesystem::path pathConfig = GetConfigFile(GetArg("-conf", BITCOIN_CONF_FILENAME));
 
-    /* Open ctp.conf with the associated application */
+    /* Open utb.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -639,15 +639,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Ctp Core.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Utb Core.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Ctp Core (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Ctp Core (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Utb Core (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Utb Core (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for "Ctp Core*.lnk"
+    // check for "Utb Core*.lnk"
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -739,8 +739,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "ctpcore.desktop";
-    return GetAutostartDir() / strprintf("ctpcore-%s.lnk", chain);
+        return GetAutostartDir() / "utbcore.desktop";
+    return GetAutostartDir() / strprintf("utbcore-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -779,13 +779,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a ctpcore.desktop file to the autostart directory:
+        // Write a utbcore.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Ctp Core\n";
+            optionFile << "Name=Utb Core\n";
         else
-            optionFile << strprintf("Name=Ctp Core (%s)\n", chain);
+            optionFile << strprintf("Name=Utb Core (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -806,7 +806,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the Ctp Core app
+    // loop through the list of startup items and try to find the Utb Core app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -851,7 +851,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add Ctp Core app to startup item list
+        // add Utb Core app to startup item list
         LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitcoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {

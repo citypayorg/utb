@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Ctp.
+This directory contains data-driven tests for various aspects of Utb.
 
 License
 --------

@@ -5,7 +5,7 @@
 #include "util.h"
 
 #include "support/allocators/secure.h"
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <boost/test/unit_test.hpp>
 

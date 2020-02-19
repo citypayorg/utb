@@ -1,8 +1,8 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 
 #include "cachemultimap.h"
 
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <algorithm>
 #include <iostream>

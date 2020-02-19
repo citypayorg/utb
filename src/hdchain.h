@@ -1,7 +1,7 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
-#ifndef CTP_HDCHAIN_H
-#define CTP_HDCHAIN_H
+#ifndef UTB_HDCHAIN_H
+#define UTB_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -147,4 +147,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // CTP_HDCHAIN_H
+#endif // UTB_HDCHAIN_H

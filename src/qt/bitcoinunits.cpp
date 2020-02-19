@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2016 The Ctp Core developers
+// Copyright (c) 2014-2016 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,9 +19,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(CTP);
-    unitlist.append(mCTP);
-    unitlist.append(uCTP);
+    unitlist.append(UTB);
+    unitlist.append(mUTB);
+    unitlist.append(uUTB);
     unitlist.append(duffs);
     return unitlist;
 }
@@ -30,9 +30,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case CTP:
-    case mCTP:
-    case uCTP:
+    case UTB:
+    case mUTB:
+    case uUTB:
     case duffs:
         return true;
     default:
@@ -46,9 +46,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case CTP: return QString("CTP");
-            case mCTP: return QString("mCTP");
-            case uCTP: return QString::fromUtf8("μCTP");
+            case UTB: return QString("UTB");
+            case mUTB: return QString("mUTB");
+            case uUTB: return QString::fromUtf8("μUTB");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -57,9 +57,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case CTP: return QString("tCTP");
-            case mCTP: return QString("mtCTP");
-            case uCTP: return QString::fromUtf8("μtCTP");
+            case UTB: return QString("tUTB");
+            case mUTB: return QString("mtUTB");
+            case uUTB: return QString::fromUtf8("μtUTB");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
@@ -72,10 +72,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case CTP: return QString("Ctp");
-            case mCTP: return QString("Milli-Ctp (1 / 1" THIN_SP_UTF8 "000)");
-            case uCTP: return QString("Micro-Ctp (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-Ctp (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case UTB: return QString("Utb");
+            case mUTB: return QString("Milli-Utb (1 / 1" THIN_SP_UTF8 "000)");
+            case uUTB: return QString("Micro-Utb (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-Utb (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -83,10 +83,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case CTP: return QString("TestCtps");
-            case mCTP: return QString("Milli-TestCtp (1 / 1" THIN_SP_UTF8 "000)");
-            case uCTP: return QString("Micro-TestCtp (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestCtp (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case UTB: return QString("TestUtbs");
+            case mUTB: return QString("Milli-TestUtb (1 / 1" THIN_SP_UTF8 "000)");
+            case uUTB: return QString("Micro-TestUtb (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestUtb (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -96,9 +96,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case CTP:  return 100000000;
-    case mCTP: return 100000;
-    case uCTP: return 100;
+    case UTB:  return 100000000;
+    case mUTB: return 100000;
+    case uUTB: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
@@ -108,9 +108,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case CTP: return 8;
-    case mCTP: return 5;
-    case uCTP: return 2;
+    case UTB: return 8;
+    case mUTB: return 5;
+    case uUTB: return 2;
     case duffs: return 0;
     default: return 0;
     }

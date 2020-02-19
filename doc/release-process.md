@@ -1,9 +1,9 @@
 Release Process
 ====================
 
-* Update translations, see [translation_process.md](https://github.com/ctppay/ctp/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations, see [translation_process.md](https://github.com/utbpay/utb/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/ctppay/ctp/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/utbpay/utb/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -19,7 +19,7 @@ Before every minor and major release:
 
 Before every major release:
 
-* Update hardcoded [seeds](/contrib/seeds/README.md). TODO: Give example PR for Ctp
+* Update hardcoded [seeds](/contrib/seeds/README.md). TODO: Give example PR for Utb
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
 
 ### First time / New builders
@@ -29,12 +29,12 @@ If you're using the automated script (found in [contrib/gitian-build.py](/contri
 Check out the source code in the following directory hierarchy.
 
 	cd /path/to/your/toplevel/build
-	git clone https://github.com/ctppay/gitian.sigs.git
-	git clone https://github.com/ctppay/ctp-detached-sigs.git
+	git clone https://github.com/utbpay/gitian.sigs.git
+	git clone https://github.com/utbpay/utb-detached-sigs.git
 	git clone https://github.com/devrandom/gitian-builder.git
-	git clone https://github.com/ctppay/ctp.git
+	git clone https://github.com/utbpay/utb.git
 
-### Ctp Core maintainers/release engineers, update (commit) version in sources
+### Utb Core maintainers/release engineers, update (commit) version in sources
 
 - `configure.ac`:
     - `_CLIENT_VERSION_MAJOR`
@@ -68,7 +68,7 @@ If you're using the automated script (found in [contrib/gitian-build.py](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./ctp
+    pushd ./utb
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.12.3)
     git fetch
@@ -103,7 +103,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../ctp/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../utb/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -111,50 +111,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url ctp=/path/to/ctp,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url utb=/path/to/utb,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Ctp Core for Linux, Windows, and OS X:
+### Build and sign Utb Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit ctp=v${VERSION} ../ctp/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../ctp/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/ctp-*.tar.gz build/out/src/ctp-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit utb=v${VERSION} ../utb/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../utb/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/utb-*.tar.gz build/out/src/utb-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit ctp=v${VERSION} ../ctp/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../ctp/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/ctp-*-win-unsigned.tar.gz inputs/ctp-win-unsigned.tar.gz
-    mv build/out/ctp-*.zip build/out/ctp-*.exe ../
+    ./bin/gbuild --memory 3000 --commit utb=v${VERSION} ../utb/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../utb/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/utb-*-win-unsigned.tar.gz inputs/utb-win-unsigned.tar.gz
+    mv build/out/utb-*.zip build/out/utb-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit ctp=v${VERSION} ../ctp/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ctp/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/ctp-*-osx-unsigned.tar.gz inputs/ctp-osx-unsigned.tar.gz
-    mv build/out/ctp-*.tar.gz build/out/ctp-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit utb=v${VERSION} ../utb/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../utb/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/utb-*-osx-unsigned.tar.gz inputs/utb-osx-unsigned.tar.gz
+    mv build/out/utb-*.tar.gz build/out/utb-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`ctp-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`ctp-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`ctp-${VERSION}-win[32|64]-setup-unsigned.exe`, `ctp-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`ctp-${VERSION}-osx-unsigned.dmg`, `ctp-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`utb-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`utb-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`utb-${VERSION}-win[32|64]-setup-unsigned.exe`, `utb-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`utb-${VERSION}-osx-unsigned.dmg`, `utb-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import ctp/contrib/gitian-keys/*.pgp
+    gpg --import utb/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../ctp/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../ctp/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../ctp/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../utb/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../utb/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../utb/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -175,22 +175,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer ctpcore-osx-unsigned.tar.gz to osx for signing
-    tar xf ctpcore-osx-unsigned.tar.gz
+    transfer utbcore-osx-unsigned.tar.gz to osx for signing
+    tar xf utbcore-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf ctpcore-win-unsigned.tar.gz
+    tar xf utbcore-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/ctpcore-detached-sigs
+    cd ~/utbcore-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -203,25 +203,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [ctp-detached-sigs](https://github.com/ctppay/ctp-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [utb-detached-sigs](https://github.com/utbpay/utb-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../ctp/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../ctp/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../ctp/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/ctp-osx-signed.dmg ../ctp-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../utb/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../utb/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../utb/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/utb-osx-signed.dmg ../utb-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../ctp/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../ctp/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../ctp/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/ctp-*win64-setup.exe ../ctp-${VERSION}-win64-setup.exe
-    mv build/out/ctp-*win32-setup.exe ../ctp-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../utb/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../utb/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../utb/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/utb-*win64-setup.exe ../utb-${VERSION}-win64-setup.exe
+    mv build/out/utb-*win32-setup.exe ../utb-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -243,23 +243,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-ctp-${VERSION}-aarch64-linux-gnu.tar.gz
-ctp-${VERSION}-arm-linux-gnueabihf.tar.gz
-ctp-${VERSION}-i686-pc-linux-gnu.tar.gz
-ctp-${VERSION}-x86_64-linux-gnu.tar.gz
-ctp-${VERSION}-osx64.tar.gz
-ctp-${VERSION}-osx.dmg
-ctp-${VERSION}.tar.gz
-ctp-${VERSION}-win32-setup.exe
-ctp-${VERSION}-win32.zip
-ctp-${VERSION}-win64-setup.exe
-ctp-${VERSION}-win64.zip
+utb-${VERSION}-aarch64-linux-gnu.tar.gz
+utb-${VERSION}-arm-linux-gnueabihf.tar.gz
+utb-${VERSION}-i686-pc-linux-gnu.tar.gz
+utb-${VERSION}-x86_64-linux-gnu.tar.gz
+utb-${VERSION}-osx64.tar.gz
+utb-${VERSION}-osx.dmg
+utb-${VERSION}.tar.gz
+utb-${VERSION}-win32-setup.exe
+utb-${VERSION}-win32.zip
+utb-${VERSION}-win64-setup.exe
+utb-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the citypay.org server*.
+space *do not upload these to the jdjpay.org server*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -269,20 +269,20 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the citypay.org server
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the jdjpay.org server
 
-- Update citypay.org
+- Update jdjpay.org
 
 - Announce the release:
 
-  - Release on Ctp forum: https://www.citypay.org/forum/topic/official-announcements.54/
+  - Release on Utb forum: https://www.jdjpay.org/forum/topic/official-announcements.54/
 
-  - Optionally Discord, twitter, reddit /r/Ctppay, ... but this will usually sort out itself
+  - Optionally Discord, twitter, reddit /r/Utbpay, ... but this will usually sort out itself
 
-  - Notify flare so that he can start building [the PPAs](https://launchpad.net/~citypay.org/+archive/ubuntu/ctp)
+  - Notify flare so that he can start building [the PPAs](https://launchpad.net/~jdjpay.org/+archive/ubuntu/utb)
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/ctppay/ctp/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/utbpay/utb/releases/new) with a link to the archived release notes.
 
   - Celebrate

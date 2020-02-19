@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Ctp Core developers
+// Copyright (c) 2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_QUORUMS_CHAINLOCKS_H
-#define CTP_QUORUMS_CHAINLOCKS_H
+#ifndef UTB_QUORUMS_CHAINLOCKS_H
+#define UTB_QUORUMS_CHAINLOCKS_H
 
 #include "llmq/quorums.h"
 #include "llmq/quorums_signing.h"
@@ -118,4 +118,4 @@ extern CChainLocksHandler* chainLocksHandler;
 
 }
 
-#endif //CTP_QUORUMS_CHAINLOCKS_H
+#endif //UTB_QUORUMS_CHAINLOCKS_H

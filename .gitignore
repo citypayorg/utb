@@ -6,13 +6,13 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/ctp
-src/ctpd
-src/ctp-cli
-src/ctp-tx
-src/test/test_ctp
-src/qt/test/test_ctp-qt
-src/bench/bench_ctp
+src/utb
+src/utbd
+src/utb-cli
+src/utb-tx
+src/test/test_utb
+src/qt/test/test_utb-qt
+src/bench/bench_utb
 
 # autoreconf
 Makefile.in
@@ -35,8 +35,8 @@ config.log
 config.status
 configure
 libtool
-src/config/ctp-config.h
-src/config/ctp-config.h.in
+src/config/utb-config.h
+src/config/utb-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -81,13 +81,13 @@ libconftest.dylib*
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-ctp-qt
-Ctp-Qt.app
+utb-qt
+Utb-Qt.app
 !/depends/Makefile
 
 # Unit-tests
 Makefile.test
-ctp-qt_test
+utb-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -101,7 +101,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_ctp.coverage/
+test_utb.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -120,15 +120,15 @@ qa/cache/*
 .autotools
 /doc/doxygen/
 
-libctpconsensus.pc
+libutbconsensus.pc
 contrib/devtools/split-debug.sh
-src/qt/ctp-qt.bash
+src/qt/utb-qt.bash
 qa/pull-tester/tests-config.sh
 
 #development symlinks
-ctp-cli
-ctpd
-ctp-qt
+utb-cli
+utbd
+utb-qt
 make
 
 /docker/bin

@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -117,12 +117,12 @@ ChainTxData 1557610432    1580571756
 
 -- 2020-02-03 00:00:00 --> 1580655600 (mainNet)
 ===================================================================================================================================
-python genesis.py -a X11 -z "so hard...but CityPay.org make for more crypto banking Service" -t 1580655600 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580655600 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
 
 04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: so hard...but CityPay.org make for more crypto banking Service
+pszTimestamp: renew for happy make for more crypto banking Service
 pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
 time: 1580655600
 bits: 0x1e0ffff0
@@ -130,18 +130,18 @@ Searching for genesis hash..
 20338.0 hash/s, estimate: 58.7 hgenesis hash found!
 nonce: 30196654
 genesis hash: 000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419
-dev@ubuntu:~/CTP_Genesis$ 
+dev@ubuntu:~/UTB_Genesis$ 
 
 
 --2020-02-02 00:00:00 --> 1580569200 (test)
 ===================================================================================================================================
-python genesis.py -a X11 -z "so hard...but CityPay.org make for more crypto banking Service" -t 1580569200 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580569200 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
 
 bcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
 04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: so hard...but CityPay.org make for more crypto banking Service
+pszTimestamp: renew for happy make for more crypto banking Service
 pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
 time: 1580569200
 bits: 0x1e0ffff0
@@ -152,13 +152,13 @@ genesis hash: 00000844645831821cda4e384ba3282f9e0a7a3c3a133d23aaa2dbf504f92c88
 
 --2020-02-01 00:00:00 --> 1580482800 (DevNet,regtest)
 ===================================================================================================================================
-python genesis.py -a X11 -z "so hard...but CityPay.org make for more crypto banking Service" -t 1580482800 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580482800 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
 
 bcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
 04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: so hard...but CityPay.org make for more crypto banking Service
+pszTimestamp: renew for happy make for more crypto banking Service
 pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
 time: 1580482800
 bits: 0x1e0ffff0
@@ -173,7 +173,7 @@ genesis hash: 00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "so hard...but CityPay.org make for more crypto banking Service";
+    const char* pszTimestamp = "renew for happy make for more crypto banking Service";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -380,7 +380,7 @@ public:
         pchMessageStart[2] = 0x6b;
         pchMessageStart[3] = 0xbd;
         vAlertPubKey = ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9");
-        nDefaultPort = 39999;
+        nDefaultPort = 49999;
         nPruneAfterHeight = 100000;
 
         // genesis = CreateGenesisBlock(1390095618, 28917698, 0x1e0ffff0, 1, 50 * COIN);
@@ -403,7 +403,7 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419"));
         assert(genesis.hashMerkleRoot     == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
 
-        vSeeds.push_back(CDNSSeedData("citypay.org", "dnsseed.citypay.org"));
+        vSeeds.push_back(CDNSSeedData("jdjpay.org", "dnsseed.jdjpay.org"));
 
         // Dash addresses start with 'X'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);
@@ -567,7 +567,7 @@ public:
 
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("test.dnsseed.citypay.org",  "testnet-seed.citypay.org"));
+        vSeeds.push_back(CDNSSeedData("test.dnsseed.jdjpay.org",  "testnet-seed.jdjpay.org"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "test.dnsseed.masternode.io"));
 
         // Testnet Dash addresses start with 'y'

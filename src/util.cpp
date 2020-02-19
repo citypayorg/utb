@@ -1,18 +1,18 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ctp-config.h"
+#include "config/utb-config.h"
 #endif
 
 #include "util.h"
 
 #include "support/allocators/secure.h"
 #include "chainparamsbase.h"
-#include "ctpl.h"
+#include "utbl.h"
 #include "random.h"
 #include "serialize.h"
 #include "stacktraces.h"
@@ -110,7 +110,7 @@ namespace boost {
 
 
 
-//Ctp only features
+//Utb only features
 bool fMasternodeMode = false;
 bool fLiteMode = false;
 /**
@@ -122,8 +122,8 @@ bool fLiteMode = false;
 */
 int nWalletBackups = 10;
 
-const char * const BITCOIN_CONF_FILENAME = "ctp.conf";
-const char * const BITCOIN_PID_FILENAME = "ctpd.pid";
+const char * const BITCOIN_CONF_FILENAME = "utb.conf";
+const char * const BITCOIN_PID_FILENAME = "utbd.pid";
 
 CCriticalSection cs_args;
 std::unordered_map<std::string, std::string> mapArgs;
@@ -284,8 +284,8 @@ bool LogAcceptCategory(const char* category)
                 const std::vector<std::string>& categories = mapMultiArgs.at("-debug");
                 ptrCategory.reset(new std::set<std::string>(categories.begin(), categories.end()));
                 // thread_specific_ptr automatically deletes the set when the thread ends.
-                // "ctp" is a composite category enabling all Ctp-related debug output
-                if(ptrCategory->count(std::string("ctp"))) {
+                // "utb" is a composite category enabling all Utb-related debug output
+                if(ptrCategory->count(std::string("utb"))) {
                     ptrCategory->insert(std::string("chainlocks"));
                     ptrCategory->insert(std::string("gobject"));
                     ptrCategory->insert(std::string("instantsend"));
@@ -565,13 +565,13 @@ void PrintExceptionContinue(const std::exception_ptr pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\CtpCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\CtpCore
-    // Mac: ~/Library/Application Support/CtpCore
-    // Unix: ~/.ctpcore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\UtbCore
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\UtbCore
+    // Mac: ~/Library/Application Support/UtbCore
+    // Unix: ~/.utbcore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "CtpCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "UtbCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -581,10 +581,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/CtpCore";
+    return pathRet / "Library/Application Support/UtbCore";
 #else
     // Unix
-    return pathRet / ".ctpcore";
+    return pathRet / ".utbcore";
 #endif
 #endif
 }
@@ -654,7 +654,7 @@ void ReadConfigFile(const std::string& confPath)
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good()){
-        // Create empty ctp.conf if it does not excist
+        // Create empty utb.conf if it does not excist
         FILE* configFile = fopen(GetConfigFile(confPath).string().c_str(), "a");
         if (configFile != NULL)
             fclose(configFile);
@@ -668,7 +668,7 @@ void ReadConfigFile(const std::string& confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override ctp.conf
+            // Don't overwrite existing settings so command line settings override utb.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);
@@ -908,7 +908,7 @@ std::string GetThreadName()
     return std::string(name);
 }
 
-void RenameThreadPool(ctpl::thread_pool& tp, const char* baseName)
+void RenameThreadPool(utbl::thread_pool& tp, const char* baseName)
 {
     auto cond = std::make_shared<std::condition_variable>();
     auto mutex = std::make_shared<std::mutex>();

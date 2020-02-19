@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 
 #include "base58.h"

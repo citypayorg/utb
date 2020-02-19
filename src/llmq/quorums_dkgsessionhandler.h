@@ -1,15 +1,15 @@
-// Copyright (c) 2018-2019 The Ctp Core developers
+// Copyright (c) 2018-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_QUORUMS_DKGSESSIONHANDLER_H
-#define CTP_QUORUMS_DKGSESSIONHANDLER_H
+#ifndef UTB_QUORUMS_DKGSESSIONHANDLER_H
+#define UTB_QUORUMS_DKGSESSIONHANDLER_H
 
 #include "llmq/quorums_dkgsession.h"
 
 #include "validation.h"
 
-#include "ctpl.h"
+#include "utbl.h"
 
 namespace llmq
 {
@@ -102,7 +102,7 @@ private:
     std::atomic<bool> stopRequested{false};
 
     const Consensus::LLMQParams& params;
-    ctpl::thread_pool& messageHandlerPool;
+    utbl::thread_pool& messageHandlerPool;
     CBLSWorker& blsWorker;
     CDKGSessionManager& dkgManager;
 
@@ -118,7 +118,7 @@ private:
     CDKGPendingMessages pendingPrematureCommitments;
 
 public:
-    CDKGSessionHandler(const Consensus::LLMQParams& _params, ctpl::thread_pool& _messageHandlerPool, CBLSWorker& blsWorker, CDKGSessionManager& _dkgManager);
+    CDKGSessionHandler(const Consensus::LLMQParams& _params, utbl::thread_pool& _messageHandlerPool, CBLSWorker& blsWorker, CDKGSessionManager& _dkgManager);
     ~CDKGSessionHandler();
 
     void UpdatedBlockTip(const CBlockIndex *pindexNew);
@@ -141,4 +141,4 @@ private:
 
 }
 
-#endif //CTP_QUORUMS_DKGSESSIONHANDLER_H
+#endif //UTB_QUORUMS_DKGSESSIONHANDLER_H

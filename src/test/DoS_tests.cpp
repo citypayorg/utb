@@ -14,7 +14,7 @@
 #include "util.h"
 #include "validation.h"
 
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <stdint.h>
 

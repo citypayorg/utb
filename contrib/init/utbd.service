@@ -1,0 +1,22 @@
+[Unit]
+Description=Utb's distributed currency daemon
+After=network.target
+
+[Service]
+User=utbcore
+Group=utbcore
+
+Type=forking
+PIDFile=/var/lib/utbd/utbd.pid
+ExecStart=/usr/bin/utbd -daemon -pid=/var/lib/utbd/utbd.pid \
+-conf=/etc/utbcore/utb.conf -datadir=/var/lib/utbd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

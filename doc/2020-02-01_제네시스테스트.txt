@@ -1,6 +1,6 @@
 /*
 ----------------- 64 bit ----------------------------
-git clone https://github.com/citypayorg/citypay
+git clone https://github.com/citypayorg/utb
 cd citypay
 cd depends
 make HOST=x86_64-w64-mingw32 -j4
@@ -26,7 +26,7 @@ https://bitcointalk.org/index.php?topic=189350.msg2035449#msg2035449
 Wired 09/Jan/2014 The Grand Experiment Goes Live: Overstock.com Is Now Accepting Bitcoins
 
 vAlertPubKey = ParseHex("048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103");
-nDefaultPort = 39999;
+nDefaultPort = 49999;
 nPruneAfterHeight = 100000;
 
 genesis = CreateGenesisBlock(1390095618, 28917698, 0x1e0ffff0, 1, 50 * COIN);
@@ -77,11 +77,11 @@ python genesis.py -a X11 -z "I created flowercoin 01/05/2017 for my dissertation
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "CityPay.org is for crypto banking Service" -t 1580299961 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103"
+dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "jdjpay.org is for crypto banking Service" -t 1580299961 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103"
 04ffff001d010429436974795061792e6f726720697320666f722063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: e4fc80d881d19fcc89db34c2c0642343734379feaf25ba501a42179258b38ba3
-pszTimestamp: CityPay.org is for crypto banking Service
+pszTimestamp: jdjpay.org is for crypto banking Service
 pubkey: 048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103
 time: 1580299961
 bits: 0x1e0ffff0
@@ -89,11 +89,11 @@ Searching for genesis hash..
 genesis hash found!
 nonce: 743201
 genesis hash: 000008f30dfaafabe648976d17103454fbf4f2797636c7fb151c7da6065a474b
-dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "CityPay.org is for crypto banking Service" -t 1580299962 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103" -b 0x1e0ffff0
+dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "jdjpay.org is for crypto banking Service" -t 1580299962 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103" -b 0x1e0ffff0
 04ffff001d010429436974795061792e6f726720697320666f722063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: e4fc80d881d19fcc89db34c2c0642343734379feaf25ba501a42179258b38ba3
-pszTimestamp: CityPay.org is for crypto banking Service
+pszTimestamp: jdjpay.org is for crypto banking Service
 pubkey: 048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103
 time: 1580299962
 bits: 0x1e0ffff0
@@ -101,11 +101,11 @@ Searching for genesis hash..
 15427.0 hash/s, estimate: 77.3 hgenesis hash found!
 nonce: 2296064
 genesis hash: 0000051ac814b1a59dd2f2953895302f87aec0864ff06b3719152edd9529d0ae
-dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "CityPay.org is for crypto banking Service" -t 1580299963 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103" -b 0x1e0ffff0
+dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "jdjpay.org is for crypto banking Service" -t 1580299963 -n 743201 -p "048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103" -b 0x1e0ffff0
 04ffff001d010429436974795061792e6f726720697320666f722063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: e4fc80d881d19fcc89db34c2c0642343734379feaf25ba501a42179258b38ba3
-pszTimestamp: CityPay.org is for crypto banking Service
+pszTimestamp: jdjpay.org is for crypto banking Service
 pubkey: 048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103
 time: 1580299963
 bits: 0x1e0ffff0
@@ -117,11 +117,11 @@ genesis hash: 00000ec69d5377cf263b2ae090bfd91ee0bf0bbf8616c34e3a26e63c62f8faa2
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "so hard...but CityPay.org make for more crypto banking Service" -t 1580551200 -p "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f" -b 0x1e0ffff0
+dev@ubuntu:~/Genesis$ python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580551200 -p "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f" -b 0x1e0ffff0
 04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
 algorithm: X11
 merkle hash: dd8723f1515caf51655706e9162d6827539f830db9e3700f9e7cd975dc4acf7b
-pszTimestamp: so hard...but CityPay.org make for more crypto banking Service
+pszTimestamp: renew for happy make for more crypto banking Service
 pubkey: 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
 time: 1580551200
 bits: 0x1e0ffff0
@@ -141,14 +141,14 @@ remote: Enumerating objects: 94, done.
 remote: Total 94 (delta 0), reused 0 (delta 0), pack-reused 94
 Unpacking objects: 100% (94/94), done.
 dev@ubuntu:~$ ls
-ctp  Desktop  Documents  Downloads  examples.desktop  Genesis  GenesisBlockZero  genesisgen  GenesisH0.zip  Music  Pictures  Public  snap  Templates  Videos
+utb  Desktop  Documents  Downloads  examples.desktop  Genesis  GenesisBlockZero  genesisgen  GenesisH0.zip  Music  Pictures  Public  snap  Templates  Videos
 dev@ubuntu:~$ ^C
 dev@ubuntu:~$ cd GenesisBlockZero
 dev@ubuntu:~/GenesisBlockZero$ ls
 genesisblock.c  README  README.md
 dev@ubuntu:~/GenesisBlockZero$ gcc genesisblock.c -o genesisgen -lcrypto
 dev@ubuntu:~/GenesisBlockZero$ 
-dev@ubuntu:~/GenesisBlockZero$ ./genesisgen 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f "so hard...but CityPay.org make for more crypto banking Service" 486604799
+dev@ubuntu:~/GenesisBlockZero$ ./genesisgen 04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f "renew for happy make for more crypto banking Service" 486604799
 
 Coinbase: 04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
 
@@ -171,9 +171,9 @@ dev@ubuntu:~/GenesisBlockZero$
 why we need to add -maxtipage=$((24*60*60*5000)) to first node , so that getblocktemplate can work ?
 
 first node:
-ctpd -debug=rpc -dns=0 -dnsseed=0 -datadir=D:\ctp\data -connect=0 -maxtipage=432000000 -daemon
+utbd -debug=rpc -dns=0 -dnsseed=0 -datadir=D:\utb\data -connect=0 -maxtipage=432000000 -daemon
 
 second node:
-ctpd -debug=rpc -addnode=127.0.0.1:39999 -dns=0 -dnsseed=0 -datadir=D:\ctp\data_1/ -daemon
+utbd -debug=rpc -addnode=127.0.0.1:49999 -dns=0 -dnsseed=0 -datadir=D:\utb\data_1/ -daemon
 
 

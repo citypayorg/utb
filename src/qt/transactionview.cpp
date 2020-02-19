@@ -561,7 +561,7 @@ void TransactionView::showAddressQRCode()
 
     dialog->setModel(model);
     dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->setInfo(tr("QR code"), "ctp:"+strAddress, "", strAddress);
+    dialog->setInfo(tr("QR code"), "utb:"+strAddress, "", strAddress);
     dialog->show();
 }
 

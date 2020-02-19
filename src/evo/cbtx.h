@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 The Ctp Core developers
+// Copyright (c) 2017-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_CBTX_H
-#define CTP_CBTX_H
+#ifndef UTB_CBTX_H
+#define UTB_CBTX_H
 
 #include "consensus/validation.h"
 #include "primitives/transaction.h"
@@ -49,4 +49,4 @@ bool CheckCbTxMerkleRoots(const CBlock& block, const CBlockIndex* pindex, CValid
 bool CalcCbTxMerkleRootMNList(const CBlock& block, const CBlockIndex* pindexPrev, uint256& merkleRootRet, CValidationState& state);
 bool CalcCbTxMerkleRootQuorums(const CBlock& block, const CBlockIndex* pindexPrev, uint256& merkleRootRet, CValidationState& state);
 
-#endif //CTP_CBTX_H
+#endif //UTB_CBTX_H

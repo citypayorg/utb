@@ -21,8 +21,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef CTP_BIP39_H
-#define CTP_BIP39_H
+#ifndef UTB_BIP39_H
+#define UTB_BIP39_H
 
 #include "support/allocators/secure.h"
 

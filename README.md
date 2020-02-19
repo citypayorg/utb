@@ -1,34 +1,51 @@
-Ctp Core staging tree 0.14.0
+Utb Core staging tree 0.14.0
 ===============================
 
-https://www.citypay.org
+https://www.jdjpay.org
 
 
-What is Ctp?
+-- ctp 를 ubt 로
+rename 's/ctp/ubt/g' ./*
+
+-- ctp 를 utb 로 하위폴더
+find . -type f | grep -E "*" | xargs rename 's/ctp/utb/g' ./*
+
+-----------------linux
+
+cd citypay
+cd depends
+make HOST=x86_64-pc-linux-gnu -j4
+cd ..
+./autogen.sh # not required when building from tarball
+CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
+make
+
+
+What is Utb?
 ----------------
 
-Ctp is an experimental digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. Ctp uses peer-to-peer technology
+Utb is an experimental digital currency that enables anonymous, instant
+payments to anyone, anywhere in the world. Utb uses peer-to-peer technology
 to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. Ctp Core is the name of the open
+are carried out collectively by the network. Utb Core is the name of the open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Ctp Core software, see https://www.citypay.org/.
+the Utb Core software, see https://www.jdjpay.org/.
 
 
 License
 -------
 
-Ctp Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Utb Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/citypayorg/citypay/tags) are created to indicate new official,
-stable release versions of Ctp Core.
+[Tags](https://github.com/citypayorg/utb/tags) are created to indicate new official,
+stable release versions of Utb Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 

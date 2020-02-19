@@ -11,7 +11,7 @@ def OSX_SDK='10.11'
 def proc = 4
 def mem = 2000
 
-def repositoryUrl = "https://github.com/ctppay/ctp.git"
+def repositoryUrl = "https://github.com/utbpay/utb.git"
 
 def tasks = [:]
 for(int i = 0; i < targets.size(); i++) {
@@ -30,14 +30,14 @@ for(int i = 0; i < targets.size(); i++) {
       def gitianDescriptor
 
       stage("${target}/prepare") {
-        dir('ctp') {
+        dir('utb') {
           checkout scm
           gitianDescriptor = readYaml file: "contrib/gitian-descriptors/gitian-${target}.yml"
         }
         dir('gitian-builder') {
-          git url: 'https://github.com/ctppay/gitian-builder.git'
+          git url: 'https://github.com/utbpay/gitian-builder.git'
         }
-        sh "mkdir -p ctpcore-binaries"
+        sh "mkdir -p utbcore-binaries"
         if (target == "osx") {
           dir('gitian-builder') {
             sh 'mkdir -p inputs'
@@ -47,28 +47,28 @@ for(int i = 0; i < targets.size(); i++) {
 
         // restore cache
         try {
-          copyArtifacts(projectName: "ctppay-ctp-gitian-nightly/${BRANCH_NAME}", optional: true, selector: lastSuccessful(), filter: "cache-${gitianDescriptor.name}.tar.gz")
+          copyArtifacts(projectName: "utbpay-utb-gitian-nightly/${BRANCH_NAME}", optional: true, selector: lastSuccessful(), filter: "cache-${gitianDescriptor.name}.tar.gz")
         } catch (Exception e) {
         }
         if (fileExists("cache-${gitianDescriptor.name}.tar.gz")) {
           hasCache = true
-          echo "Using cache from ctppay-ctp-gitian-nightly/${BRANCH_NAME}"
+          echo "Using cache from utbpay-utb-gitian-nightly/${BRANCH_NAME}"
         } else {
           try {
-            copyArtifacts(projectName: 'ctppay-ctp-gitian-nightly/develop', optional: true, selector: lastSuccessful(), filter: "cache-${gitianDescriptor.name}.tar.gz");
+            copyArtifacts(projectName: 'utbpay-utb-gitian-nightly/develop', optional: true, selector: lastSuccessful(), filter: "cache-${gitianDescriptor.name}.tar.gz");
           } catch (Exception e) {
           }
           if (fileExists("cache-${gitianDescriptor.name}.tar.gz")) {
             hasCache = true
-            echo "Using cache from ctppay-ctp-gitian-nightly/develop"
+            echo "Using cache from utbpay-utb-gitian-nightly/develop"
           }
         }
       }
 
       def gitianImage
       stage("${target}/builder-image") {
-        dir('ctp') {
-          gitianImage = docker.build("ctp-gitian:${env.BUILD_ID}", 'ci -f ci/Dockerfile.gitian-builder')
+        dir('utb') {
+          gitianImage = docker.build("utb-gitian:${env.BUILD_ID}", 'ci -f ci/Dockerfile.gitian-builder')
         }
       }
 
@@ -83,7 +83,7 @@ for(int i = 0; i < targets.size(); i++) {
             sh "mkdir -p inputs"
             sh "cd inputs && curl -R -O ${osslPatchUrl}"
             sh "cd inputs && curl -R -O ${osslTarUrl}"
-            sh "make -C ../ctp/depends download SOURCES_PATH=`pwd`/cache/common"
+            sh "make -C ../utb/depends download SOURCES_PATH=`pwd`/cache/common"
           }
         }
         stage("${target}/base-vm") {
@@ -101,7 +101,7 @@ for(int i = 0; i < targets.size(); i++) {
               sh """
                 tail -F var/install.log &
                 tail -F var/build.log &
-                USE_DOCKER=1 ./bin/gbuild -j ${proc} -m ${mem} --commit ctp=${commit} --url ctp=${repositoryUrl} ../ctp/contrib/gitian-descriptors/gitian-${target}.yml
+                USE_DOCKER=1 ./bin/gbuild -j ${proc} -m ${mem} --commit utb=${commit} --url utb=${repositoryUrl} ../utb/contrib/gitian-descriptors/gitian-${target}.yml
                 RET=\$?
                 # give the above tail calls enough time to print everything on failure
                 sleep 2s
@@ -111,10 +111,10 @@ for(int i = 0; i < targets.size(); i++) {
               // make sure it doesn't run forever
               sh "docker rm -fv gitian-target || true"
             }
-            sh "mv build/out/ctpcore-* ../ctpcore-binaries/"
-            sh "mv build/out/src/ctpcore-* ../ctpcore-binaries/"
+            sh "mv build/out/utbcore-* ../utbcore-binaries/"
+            sh "mv build/out/src/utbcore-* ../utbcore-binaries/"
           }
-          archiveArtifacts artifacts: 'ctpcore-binaries/*', fingerprint: true
+          archiveArtifacts artifacts: 'utbcore-binaries/*', fingerprint: true
         }
 
         // TODO remove this in a few days (only needed to prune the old compressed file from Jenkins caches)

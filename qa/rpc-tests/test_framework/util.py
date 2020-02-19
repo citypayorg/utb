@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
-# Copyright (c) 2014-2017 The Ctp Core developers
+# Copyright (c) 2014-2017 The Utb Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Helpful routines for regression testing."""
@@ -206,7 +206,7 @@ def initialize_datadir(dirname, n):
     if not os.path.isdir(datadir):
         os.makedirs(datadir)
     rpc_u, rpc_p = rpc_auth_pair(n)
-    with open(os.path.join(datadir, "ctp.conf"), 'w', encoding='utf8') as f:
+    with open(os.path.join(datadir, "utb.conf"), 'w', encoding='utf8') as f:
         f.write("regtest=1\n")
         f.write("rpcuser=" + rpc_u + "\n")
         f.write("rpcpassword=" + rpc_p + "\n")
@@ -232,12 +232,12 @@ def rpc_url(i, rpchost=None):
 
 def wait_for_bitcoind_start(process, url, i):
     '''
-    Wait for ctpd to start. This means that RPC is accessible and fully initialized.
-    Raise an exception if ctpd exits during initialization.
+    Wait for utbd to start. This means that RPC is accessible and fully initialized.
+    Raise an exception if utbd exits during initialization.
     '''
     while True:
         if process.poll() is not None:
-            raise Exception('ctpd exited with status %i during initialization' % process.returncode)
+            raise Exception('utbd exited with status %i during initialization' % process.returncode)
         try:
             rpc = get_rpc_proxy(url, i)
             blocks = rpc.getblockcount()
@@ -272,10 +272,10 @@ def initialize_chain(test_dir, num_nodes, cachedir, extra_args=None, redirect_st
                 shutil.rmtree(os.path.join(cachedir,"node"+str(i)))
 
         set_genesis_mocktime()
-        # Create cache directories, run ctpds:
+        # Create cache directories, run utbds:
         for i in range(MAX_NODES):
             datadir=initialize_datadir(cachedir, i)
-            args = [ os.getenv("BITCOIND", "ctpd"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0", "-mocktime="+str(GENESISTIME) ]
+            args = [ os.getenv("BITCOIND", "utbd"), "-server", "-keypool=1", "-datadir="+datadir, "-discover=0", "-mocktime="+str(GENESISTIME) ]
             if i > 0:
                 args.append("-connect=127.0.0.1:"+str(p2p_port(0)))
             if extra_args is not None:
@@ -284,7 +284,7 @@ def initialize_chain(test_dir, num_nodes, cachedir, extra_args=None, redirect_st
             if redirect_stderr:
                 stderr = sys.stdout
             bitcoind_processes[i] = subprocess.Popen(args, stderr=stderr)
-            logger.debug("initialize_chain: ctpd started, waiting for RPC to come up")
+            logger.debug("initialize_chain: utbd started, waiting for RPC to come up")
             wait_for_bitcoind_start(bitcoind_processes[i], rpc_url(i), i)
             logger.debug("initialize_chain: RPC successfully started")
 
@@ -325,7 +325,7 @@ def initialize_chain(test_dir, num_nodes, cachedir, extra_args=None, redirect_st
         from_dir = os.path.join(cachedir, "node"+str(i))
         to_dir = os.path.join(test_dir,  "node"+str(i))
         shutil.copytree(from_dir, to_dir)
-        initialize_datadir(test_dir, i) # Overwrite port/rpcport in ctp.conf
+        initialize_datadir(test_dir, i) # Overwrite port/rpcport in utb.conf
 
 def initialize_chain_clean(test_dir, num_nodes):
     """
@@ -337,11 +337,11 @@ def initialize_chain_clean(test_dir, num_nodes):
 
 def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=None, redirect_stderr=False, stderr=None):
     """
-    Start a ctpd and return RPC connection to it
+    Start a utbd and return RPC connection to it
     """
     datadir = os.path.join(dirname, "node"+str(i))
     if binary is None:
-        binary = os.getenv("BITCOIND", "ctpd")
+        binary = os.getenv("BITCOIND", "utbd")
     # RPC tests still depend on free transactions
     args = [ binary, "-datadir="+datadir, "-server", "-keypool=1", "-discover=0", "-rest", "-blockprioritysize=50000", "-logtimemicros", "-debug", "-mocktime="+str(get_mocktime()) ]
     # Don't try auto backups (they fail a lot when running tests)
@@ -354,7 +354,7 @@ def start_node(i, dirname, extra_args=None, rpchost=None, timewait=None, binary=
         stderr = sys.stdout
 
     bitcoind_processes[i] = subprocess.Popen(args, stderr=stderr)
-    logger.debug("initialize_chain: ctpd started, waiting for RPC to come up")
+    logger.debug("initialize_chain: utbd started, waiting for RPC to come up")
     url = rpc_url(i, rpchost)
     wait_for_bitcoind_start(bitcoind_processes[i], url, i)
     logger.debug("initialize_chain: RPC successfully started")
@@ -371,7 +371,7 @@ def assert_start_raises_init_error(i, dirname, extra_args=None, expected_msg=Non
             node = start_node(i, dirname, extra_args, stderr=log_stderr)
             stop_node(node, i)
         except Exception as e:
-            assert 'ctpd exited' in str(e) #node must have shutdown
+            assert 'utbd exited' in str(e) #node must have shutdown
             if expected_msg is not None:
                 log_stderr.seek(0)
                 stderr = log_stderr.read().decode('utf-8')
@@ -379,14 +379,14 @@ def assert_start_raises_init_error(i, dirname, extra_args=None, expected_msg=Non
                     raise AssertionError("Expected error \"" + expected_msg + "\" not found in:\n" + stderr)
         else:
             if expected_msg is None:
-                assert_msg = "ctpd should have exited with an error"
+                assert_msg = "utbd should have exited with an error"
             else:
-                assert_msg = "ctpd should have exited with expected error " + expected_msg
+                assert_msg = "utbd should have exited with expected error " + expected_msg
             raise AssertionError(assert_msg)
 
 def start_nodes(num_nodes, dirname, extra_args=None, rpchost=None, timewait=None, binary=None, redirect_stderr=False):
     """
-    Start multiple ctpds, return RPC connections to them
+    Start multiple utbds, return RPC connections to them
     """
     if extra_args is None: extra_args = [ None for _ in range(num_nodes) ]
     if binary is None: binary = [ None for _ in range(num_nodes) ]
@@ -537,10 +537,10 @@ def assert_fee_amount(fee, tx_size, fee_per_kB):
     """Assert the fee was in range"""
     target_fee = tx_size * fee_per_kB / 1000
     if fee < target_fee:
-        raise AssertionError("Fee of %s CTP too low! (Should be %s CTP)"%(str(fee), str(target_fee)))
+        raise AssertionError("Fee of %s UTB too low! (Should be %s UTB)"%(str(fee), str(target_fee)))
     # allow the wallet's estimation to be at most 2 bytes off
     if fee > (tx_size + 2) * fee_per_kB / 1000:
-        raise AssertionError("Fee of %s CTP too high! (Should be %s CTP)"%(str(fee), str(target_fee)))
+        raise AssertionError("Fee of %s UTB too high! (Should be %s UTB)"%(str(fee), str(target_fee)))
 
 def assert_equal(thing1, thing2, *args):
     if thing1 != thing2 or any(thing1 != arg for arg in args):

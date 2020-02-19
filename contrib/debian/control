@@ -1,8 +1,8 @@
-Source: ctp
+Source: utb
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@citypay.org>
-Uploaders: Holger Schinzel <holger@citypay.org>
+Maintainer: Holger Schinzel <holger@jdjpay.org>
+Uploaders: Holger Schinzel <holger@jdjpay.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -26,45 +26,45 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://www.citypay.org/
-Vcs-Git: git://github.com/ctppay/ctp.git
-Vcs-Browser: https://github.com/ctppay/ctp
+Homepage: https://www.jdjpay.org/
+Vcs-Git: git://github.com/utbpay/utb.git
+Vcs-Browser: https://github.com/utbpay/utb
 
-Package: ctpd
+Package: utbd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- Ctp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Ctp uses peer-to-peer
+ Utb is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Utb uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Ctp Core
+ and issuing money are carried out collectively by the network. Utb Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, ctpd, and the CLI tool
- ctp-cli to interact with the daemon.
+ This package provides the daemon, utbd, and the CLI tool
+ utb-cli to interact with the daemon.
 
-Package: ctp-qt
+Package: utb-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- Ctp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Ctp uses peer-to-peer
+ Utb is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Utb uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Ctp Core
+ and issuing money are carried out collectively by the network. Utb Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides Ctp-Qt, a GUI for Ctp based on Qt.
+ This package provides Utb-Qt, a GUI for Utb based on Qt.
 
-Package: ctp-tx
+Package: utb-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- Ctp is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. Ctp uses peer-to-peer
+ Utb is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Utb uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. Ctp Core
+ and issuing money are carried out collectively by the network. Utb Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides ctp-tx, a command-line transaction creation
- tool which can be used without a ctp daemon.  Some means of
+ This package provides utb-tx, a command-line transaction creation
+ tool which can be used without a utb daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

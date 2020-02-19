@@ -1,28 +1,28 @@
 Translations
 ============
 
-The Ctp Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable. For managing all application translations, Ctp Core makes use of the Transifex online translation management tool.
+The Utb Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable. For managing all application translations, Utb Core makes use of the Transifex online translation management tool.
 
 ### Helping to translate (using Transifex)
 Transifex is setup to monitor the GitHub repo for updates, and when code containing new translations is found, Transifex will process any changes. It may take several hours after a pull-request has been merged, to appear in the Transifex web interface.
 
-Multiple language support is critical in assisting Ctp’s global adoption, and growth. One of Ctp’s greatest strengths is cross-border money transfers, any help making that easier is greatly appreciated.
+Multiple language support is critical in assisting Utb’s global adoption, and growth. One of Utb’s greatest strengths is cross-border money transfers, any help making that easier is greatly appreciated.
 
-See the [Transifex Ctp project](https://www.transifex.com/projects/p/ctp/) to assist in translations. You should also join the translation mailing list for announcements - see details below.
+See the [Transifex Utb project](https://www.transifex.com/projects/p/utb/) to assist in translations. You should also join the translation mailing list for announcements - see details below.
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:
-`ctp_xx_YY.ts or ctp_xx.ts`
+`utb_xx_YY.ts or utb_xx.ts`
 
-`src/qt/locale/ctp_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `ctp_en.ts`.
+`src/qt/locale/utb_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `utb_en.ts`.
 
-To automatically regenerate the `ctp_en.ts` file, run the following commands:
+To automatically regenerate the `utb_en.ts` file, run the following commands:
 ```sh
 cd src/
 make translate
 ```
 
-`contrib/ctp-qt.pro` takes care of generating `.qm` (binary compiled) files from `.ts` (source files) files. It’s mostly automated, and you shouldn’t need to worry about it.
+`contrib/utb-qt.pro` takes care of generating `.qm` (binary compiled) files from `.ts` (source files) files. It’s mostly automated, and you shouldn’t need to worry about it.
 
 **Example Qt translation**
 ```cpp
@@ -36,7 +36,7 @@ When an updated source file is merged into the GitHub repo, Transifex will autom
 
 To create the pull-request, use the following commands:
 ```
-git add src/qt/ctpstrings.cpp src/qt/locale/ctp_en.ts
+git add src/qt/utbstrings.cpp src/qt/locale/utb_en.ts
 git commit
 ```
 
@@ -44,7 +44,7 @@ git commit
 ### Creating a Transifex account
 Visit the [Transifex Signup](https://www.transifex.com/signup/) page to create an account. Take note of your username and password, as they will be required to configure the command-line tool.
 
-You can find the Ctp translation project at [https://www.transifex.com/projects/p/ctp/](https://www.transifex.com/projects/p/ctp/).
+You can find the Utb translation project at [https://www.transifex.com/projects/p/utb/](https://www.transifex.com/projects/p/utb/).
 
 ### Installing the Transifex client command-line tool
 The client it used to fetch updated translations. If you are having problems, or need more details, see [http://docs.transifex.com/developer/client/setup](http://docs.transifex.com/developer/client/setup)
@@ -69,16 +69,16 @@ username = USERNAME
 
 Please see [http://docs.transifex.com/developer/client/setup#windows](http://docs.transifex.com/developer/client/setup#windows) for details on installation.
 
-The Transifex Ctp project config file is included as part of the repo. It can be found at `.tx/config`, however you shouldn’t need change anything.
+The Transifex Utb project config file is included as part of the repo. It can be found at `.tx/config`, however you shouldn’t need change anything.
 
 ### Synchronising translations
 To assist in updating translations, we have created a script to help.
 
 1. `python contrib/devtools/update-translations.py`
-2. Update `src/qt/ctp_locale.qrc` manually or via
-   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(ctp_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'`
+2. Update `src/qt/utb_locale.qrc` manually or via
+   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(utb_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'`
 3. Update `src/Makefile.qt.include` manually or via
-   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(ctp_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'`
+   `ls src/qt/locale/*ts|xargs -n1 basename|sed 's/\(utb_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'`
 4. `git add` new translations from `src/qt/locale/`
 
 **Do not directly download translations** one by one from the Transifex website, as we do a few post-processing steps before committing the translations.
@@ -86,7 +86,7 @@ To assist in updating translations, we have created a script to help.
 ### Handling Plurals (in source files)
 When new plurals are added to the source file, it's important to do the following steps:
 
-1. Open `ctp_en.ts` in Qt Linguist (included in the Qt SDK)
+1. Open `utb_en.ts` in Qt Linguist (included in the Qt SDK)
 2. Search for `%n`, which will take you to the parts in the translation that use plurals
 3. Look for empty `English Translation (Singular)` and `English Translation (Plural)` fields
 4. Add the appropriate strings for the singular and plural form of the base string
@@ -95,11 +95,11 @@ When new plurals are added to the source file, it's important to do the followin
 7. Save the source file
 
 ### Translating a new language
-To create a new language template, you will need to edit the languages manifest file `src/qt/ctp_locale.qrc` and add a new entry. Below is an example of the English language entry.
+To create a new language template, you will need to edit the languages manifest file `src/qt/utb_locale.qrc` and add a new entry. Below is an example of the English language entry.
 
 ```xml
 <qresource prefix="/translations">
-    <file alias="en">locale/ctp_en.qm</file>
+    <file alias="en">locale/utb_en.qm</file>
     ...
 </qresource>
 ```
@@ -107,4 +107,4 @@ To create a new language template, you will need to edit the languages manifest 
 **Note:** that the language translation file **must end in `.qm`** (the compiled extension), and not `.ts`.
 
 ### Questions and general assistance
-Check official forum at [https://www.citypay.org/forum/topic/ctp-worldwide-collaboration.88/](https://www.citypay.org/forum/topic/ctp-worldwide-collaboration.88/).
+Check official forum at [https://www.jdjpay.org/forum/topic/utb-worldwide-collaboration.88/](https://www.jdjpay.org/forum/topic/utb-worldwide-collaboration.88/).

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Utb Core
+Comment=Utb P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Utb peer-to-peer Netzwerk
+Comment[fr]=Utb, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Utb, eşten eşe kriptografik sanal para birimi
+Exec=utb-qt %u
+Terminal=false
+Type=Application
+Icon=utb128
+MimeType=x-scheme-handler/utb;
+Categories=Office;Finance;

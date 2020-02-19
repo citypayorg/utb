@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[ctp.qt-translation-012x]
-file_filter = src/qt/locale/ctp_<lang>.ts
-source_file = src/qt/locale/ctp_en.ts
+[utb.qt-translation-012x]
+file_filter = src/qt/locale/utb_<lang>.ts
+source_file = src/qt/locale/utb_en.ts
 source_lang = en

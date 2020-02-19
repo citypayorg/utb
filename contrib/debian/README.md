@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package ctpd/ctp-qt
-for Debian-based Linux systems. If you compile ctpd/ctp-qt yourself, there are some useful files here.
+This directory contains files used to package utbd/utb-qt
+for Debian-based Linux systems. If you compile utbd/utb-qt yourself, there are some useful files here.
 
-## ctp: URI support ##
+## utb: URI support ##
 
 
-ctp-qt.desktop  (Gnome / Open Desktop)
+utb-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install ctp-qt.desktop
+	sudo desktop-file-install utb-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your ctp-qt binary to `/usr/bin`
-and the `../../share/pixmaps/ctp128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your utb-qt binary to `/usr/bin`
+and the `../../share/pixmaps/utb128.png` to `/usr/share/pixmaps`
 
-ctp-qt.protocol (KDE)
+utb-qt.protocol (KDE)
 

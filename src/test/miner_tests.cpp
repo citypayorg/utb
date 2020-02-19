@@ -18,7 +18,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <memory>
 

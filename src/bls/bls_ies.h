@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_CRYPTO_BLS_IES_H
-#define CTP_CRYPTO_BLS_IES_H
+#ifndef UTB_CRYPTO_BLS_IES_H
+#define UTB_CRYPTO_BLS_IES_H
 
 #include "bls.h"
 #include "streams.h"
@@ -161,4 +161,4 @@ public:
     }
 };
 
-#endif // CTP_CRYPTO_BLS_IES_H
+#endif // UTB_CRYPTO_BLS_IES_H

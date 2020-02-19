@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.ctp.Ctp-Qt";
+        return @"org.utb.Utb-Qt";
     } else {
         return [self __bundleIdentifier];
     }

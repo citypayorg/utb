@@ -12,7 +12,7 @@ make
 ====================
 
 
-Below are some notes on how to build Ctp Core for Windows.
+Below are some notes on how to build Utb Core for Windows.
 
 Most developers use cross-compilation from Ubuntu to build executables for
 Windows. This is also used to build the release binaries.
@@ -66,6 +66,6 @@ Installation
 After building using the Windows subsystem it can be useful to copy the compiled
 executables to a directory on the windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
-way. This will install to `c:\workspace\ctp`, for example:
+way. This will install to `c:\workspace\utb`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/ctp
+    make install DESTDIR=/mnt/c/workspace/utb

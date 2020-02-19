@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_PROVIDERTX_H
-#define CTP_PROVIDERTX_H
+#ifndef UTB_PROVIDERTX_H
+#define UTB_PROVIDERTX_H
 
 #include "bls/bls.h"
 #include "consensus/validation.h"
@@ -183,4 +183,4 @@ bool CheckProUpServTx(const CTransaction& tx, const CBlockIndex* pindexPrev, CVa
 bool CheckProUpRegTx(const CTransaction& tx, const CBlockIndex* pindexPrev, CValidationState& state);
 bool CheckProUpRevTx(const CTransaction& tx, const CBlockIndex* pindexPrev, CValidationState& state);
 
-#endif //CTP_PROVIDERTX_H
+#endif //UTB_PROVIDERTX_H

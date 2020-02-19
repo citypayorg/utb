@@ -1,21 +1,21 @@
 Shared Libraries
 ================
 
-## ctpconsensus
+## utbconsensus
 
-The purpose of this library is to make the verification functionality that is critical to Ctp's consensus available to other applications, e.g. to language bindings.
+The purpose of this library is to make the verification functionality that is critical to Utb's consensus available to other applications, e.g. to language bindings.
 
 ### API
 
-The interface is defined in the C header `ctpconsensus.h` located in  `src/script/ctpconsensus.h`.
+The interface is defined in the C header `utbconsensus.h` located in  `src/script/utbconsensus.h`.
 
 #### Version
 
-`ctpconsensus_version` returns an `unsigned int` with the API version *(currently at an experimental `0`)*.
+`utbconsensus_version` returns an `unsigned int` with the API version *(currently at an experimental `0`)*.
 
 #### Script Validation
 
-`ctpconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
+`utbconsensus_verify_script` returns an `int` with the status of the verification. It will be `1` if the input script correctly spends the previous output `scriptPubKey`.
 
 ##### Parameters
 - `const unsigned char *scriptPubKey` - The previous output script that encumbers spending.
@@ -24,21 +24,21 @@ The interface is defined in the C header `ctpconsensus.h` located in  `src/scrip
 - `unsigned int txToLen` - The number of bytes for the `txTo`.
 - `unsigned int nIn` - The index of the input in `txTo` that spends the `scriptPubKey`.
 - `unsigned int flags` - The script validation flags *(see below)*.
-- `ctpconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
+- `utbconsensus_error* err` - Will have the error/success code for the operation *(see below)*.
 
 ##### Script Flags
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_NONE`
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) subscripts
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki)) compliance
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY` - Enforce NULLDUMMY ([BIP147](https://github.com/bitcoin/bips/blob/master/bip-0147.mediawiki))
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY` - Enable CHECKLOCKTIMEVERIFY ([BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki))
-- `ctpconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY` - Enable CHECKSEQUENCEVERIFY ([BIP112](https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki))
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_NONE`
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_P2SH` - Evaluate P2SH ([BIP16](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki)) subscripts
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_DERSIG` - Enforce strict DER ([BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki)) compliance
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY` - Enforce NULLDUMMY ([BIP147](https://github.com/bitcoin/bips/blob/master/bip-0147.mediawiki))
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY` - Enable CHECKLOCKTIMEVERIFY ([BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki))
+- `utbconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY` - Enable CHECKSEQUENCEVERIFY ([BIP112](https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki))
 
 ##### Errors
-- `ctpconsensus_ERR_OK` - No errors with input parameters *(see the return value of `ctpconsensus_verify_script` for the verification status)*
-- `ctpconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
-- `ctpconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
-- `ctpconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
+- `utbconsensus_ERR_OK` - No errors with input parameters *(see the return value of `utbconsensus_verify_script` for the verification status)*
+- `utbconsensus_ERR_TX_INDEX` - An invalid index for `txTo`
+- `utbconsensus_ERR_TX_SIZE_MISMATCH` - `txToLen` did not match with the size of `txTo`
+- `utbconsensus_ERR_DESERIALIZE` - An error deserializing `txTo`
 
 ### Example Implementations
 - [NBitcoin](https://github.com/NicolasDorier/NBitcoin/blob/master/NBitcoin/Script.cs#L814) (.NET Bindings)

@@ -1,13 +1,13 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_CRYPTO_BLS_WORKER_H
-#define CTP_CRYPTO_BLS_WORKER_H
+#ifndef UTB_CRYPTO_BLS_WORKER_H
+#define UTB_CRYPTO_BLS_WORKER_H
 
 #include "bls.h"
 
-#include "ctpl.h"
+#include "utbl.h"
 
 #include <future>
 #include <mutex>
@@ -26,7 +26,7 @@ public:
     typedef std::function<bool()> CancelCond;
 
 private:
-    ctpl::thread_pool workerPool;
+    utbl::thread_pool workerPool;
 
     static const int SIG_VERIFY_BATCH_SIZE = 8;
     struct SigVerifyJob {
@@ -202,4 +202,4 @@ private:
     }
 };
 
-#endif //CTP_CRYPTO_BLS_WORKER_H
+#endif //UTB_CRYPTO_BLS_WORKER_H

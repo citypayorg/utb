@@ -1,0 +1,6 @@
+usr/local/bin/utb-qt usr/bin
+share/pixmaps/utb32.xpm usr/share/pixmaps
+share/pixmaps/utb16.xpm usr/share/pixmaps
+share/pixmaps/utb128.png usr/share/pixmaps
+debian/utb-qt.desktop usr/share/applications
+debian/utb-qt.protocol usr/share/kde4/services/

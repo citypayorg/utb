@@ -1,9 +1,9 @@
-// Copyright (c) 2019 The Ctp Core developers
+// Copyright (c) 2019 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_UNORDERED_LRU_CACHE_H
-#define CTP_UNORDERED_LRU_CACHE_H
+#ifndef UTB_UNORDERED_LRU_CACHE_H
+#define UTB_UNORDERED_LRU_CACHE_H
 
 #include <unordered_map>
 
@@ -107,4 +107,4 @@ private:
     }
 };
 
-#endif // CTP_UNORDERED_LRU_CACHE_H
+#endif // UTB_UNORDERED_LRU_CACHE_H

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 
 #include "governance-validators.h"
 #include "utilstrencodings.h"
@@ -6,7 +6,7 @@
 #include "data/proposals_valid.json.h"
 #include "data/proposals_invalid.json.h"
 
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <iostream>
 #include <fstream>

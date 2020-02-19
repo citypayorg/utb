@@ -1,7 +1,7 @@
-Contributing to Ctp Core
+Contributing to Utb Core
 ============================
 
-The Ctp Core project operates an open contributor model where anyone is
+The Utb Core project operates an open contributor model where anyone is
 welcome to contribute towards development in the form of peer review, testing
 and patches. This document explains the practical process and guidelines for
 contributing.
@@ -157,11 +157,11 @@ where possible keep them short, uncomplex and easy to verify.
 "Decision Making" Process
 -------------------------
 
-The following applies to code changes to the Ctp Core project (and related
-projects such as libsecp256k1), and is not to be confused with overall Ctp
+The following applies to code changes to the Utb Core project (and related
+projects such as libsecp256k1), and is not to be confused with overall Utb
 Network Protocol consensus changes.
 
-Whether a pull request is merged into Ctp Core rests with the project merge
+Whether a pull request is merged into Utb Core rests with the project merge
 maintainers and ultimately the project lead.
 
 Maintainers will take into consideration if a patch is in line with the general
@@ -179,7 +179,7 @@ In general, all pull requests must:
   - where bugs are fixed, where possible, there should be unit tests
     demonstrating the bug and also proving the fix. This helps prevent regression.
 
-Patches that change Ctp consensus rules are considerably more involved than
+Patches that change Utb consensus rules are considerably more involved than
 normal because they affect the entire ecosystem and so must be preceded by
 extensive mailing list discussions and have a numbered BIP. While each case will
 be different, one should be prepared to expend more time and effort than for
@@ -220,7 +220,7 @@ higher in terms of discussion and peer review requirements, keeping in mind that
 mistakes could be very costly to the wider community. This includes refactoring
 of consensus critical code.
 
-Where a patch set proposes to change the Ctp consensus, it must have been
+Where a patch set proposes to change the Utb consensus, it must have been
 discussed extensively on the mailing list and IRC, be accompanied by a widely
 discussed BIP and have a generally widely perceived technical consensus of being
 a worthwhile change based on the judgement of the maintainers.
@@ -229,7 +229,7 @@ a worthwhile change based on the judgement of the maintainers.
 Release Policy
 --------------
 
-The project leader is the release manager for each Ctp Core release.
+The project leader is the release manager for each Utb Core release.
 
 Copyright
 ---------

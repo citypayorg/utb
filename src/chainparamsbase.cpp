@@ -34,7 +34,7 @@ class CBaseMainParams : public CBaseChainParams
 public:
     CBaseMainParams()
     {
-        nRPCPort = 39998;
+        nRPCPort = 49998;
     }
 };
 static CBaseMainParams mainParams;
@@ -143,7 +143,7 @@ std::string GetDevNetName()
     assert(IsArgSet("-devnet"));
     std::string devNetName = GetArg("-devnet", "");
     return "devnet" + (devNetName.empty() ? "" : "-" + devNetName);
-    //return "so hard...but CityPay.org make for more crypto banking Service";
+    //return "renew for happy make for more crypto banking Service";
 }
 
 bool AreBaseParamsConfigured()

@@ -1,5 +1,5 @@
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2014-2018 The Ctp Core developers
+# Copyright (c) 2014-2018 The Utb Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -50,23 +50,23 @@ BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
 BLS_LIBS=-lchiabls -lgmp
 
-LIBBITCOIN_SERVER=libctp_server.a
-LIBBITCOIN_COMMON=libctp_common.a
-LIBBITCOIN_CONSENSUS=libctp_consensus.a
-LIBBITCOIN_CLI=libctp_cli.a
-LIBBITCOIN_UTIL=libctp_util.a
-LIBBITCOIN_CRYPTO=crypto/libctp_crypto.a
-LIBBITCOINQT=qt/libctpqt.a
+LIBBITCOIN_SERVER=libutb_server.a
+LIBBITCOIN_COMMON=libutb_common.a
+LIBBITCOIN_CONSENSUS=libutb_consensus.a
+LIBBITCOIN_CLI=libutb_cli.a
+LIBBITCOIN_UTIL=libutb_util.a
+LIBBITCOIN_CRYPTO=crypto/libutb_crypto.a
+LIBBITCOINQT=qt/libutbqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libctp_zmq.a
+LIBBITCOIN_ZMQ=libutb_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libctpconsensus.la
+LIBBITCOINCONSENSUS=libutbconsensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libctp_wallet.a
+LIBBITCOIN_WALLET=libutb_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -91,15 +91,15 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += ctpd
+  bin_PROGRAMS += utbd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += ctp-cli ctp-tx
+  bin_PROGRAMS += utb-cli utb-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# ctp core #
+# utb core #
 BITCOIN_CORE_H = \
   addrdb.h \
   activemasternode.h \
@@ -132,7 +132,7 @@ BITCOIN_CORE_H = \
   core_io.h \
   core_memusage.h \
   cuckoocache.h \
-  ctpl.h \
+  utbl.h \
   cxxtimer.hpp \
   evo/cbtx.h \
   evo/deterministicmns.h \
@@ -252,12 +252,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libctp_util_a-clientversion.$(OBJEXT): obj/build.h
+libutb_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between ctpd and ctp-qt
-libctp_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libctp_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_server_a_SOURCES = \
+# server: shared between utbd and utb-qt
+libutb_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libutb_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_server_a_SOURCES = \
   activemasternode.cpp \
   addrman.cpp \
   addrdb.cpp \
@@ -341,20 +341,20 @@ libctp_server_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
-libctp_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libctp_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_zmq_a_SOURCES = \
+libutb_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libutb_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between ctpd and ctp-qt, but only linked
+# wallet: shared between utbd and utb-qt, but only linked
 # when wallet enabled
-libctp_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libctp_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_wallet_a_SOURCES = \
+libutb_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libutb_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_wallet_a_SOURCES = \
   keepass.cpp \
   privatesend-client.cpp \
   privatesend-util.cpp \
@@ -367,9 +367,9 @@ libctp_wallet_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libctp_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
-crypto_libctp_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
-crypto_libctp_crypto_a_SOURCES = \
+crypto_libutb_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
+crypto_libutb_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
+crypto_libutb_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/common.h \
@@ -388,7 +388,7 @@ crypto_libctp_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # x11
-crypto_libctp_crypto_a_SOURCES += \
+crypto_libutb_crypto_a_SOURCES += \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -414,9 +414,9 @@ crypto_libctp_crypto_a_SOURCES += \
   crypto/sph_types.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libctp_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libctp_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_consensus_a_SOURCES = \
+libutb_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libutb_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -435,7 +435,7 @@ libctp_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/ctpconsensus.cpp \
+  script/utbconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -451,10 +451,10 @@ libctp_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between ctpd, and ctp-qt and non-server tools
-libctp_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libctp_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_common_a_SOURCES = \
+# common: shared between utbd, and utb-qt and non-server tools
+libutb_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libutb_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   bip39.cpp \
@@ -479,9 +479,9 @@ libctp_common_a_SOURCES = \
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libctp_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libctp_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_util_a_SOURCES = \
+libutb_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libutb_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_util_a_SOURCES = \
   bls/bls_batchverifier.h \
   bls/bls_ies.cpp \
   bls/bls_ies.h \
@@ -506,31 +506,31 @@ libctp_util_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libctp_util_a_SOURCES += compat/glibc_compat.cpp
+libutb_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += -Wl,--wrap=log2f -Wl,--wrap=__divmoddi4
 endif
 
-# cli: shared between ctp-cli and ctp-qt
-libctp_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libctp_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libctp_cli_a_SOURCES = \
+# cli: shared between utb-cli and utb-qt
+libutb_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libutb_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutb_cli_a_SOURCES = \
   rpc/client.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_libctp_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libutb_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# ctpd binary #
-ctpd_SOURCES = ctpd.cpp
-ctpd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-ctpd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-ctpd_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# utbd binary #
+utbd_SOURCES = utbd.cpp
+utbd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+utbd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+utbd_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-ctpd_SOURCES += ctpd-res.rc
+utbd_SOURCES += utbd-res.rc
 endif
 
-ctpd_LDADD = \
+utbd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -543,37 +543,37 @@ ctpd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-ctpd_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
+utbd_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
 
-# ctp-cli binary #
-ctp_cli_SOURCES = ctp-cli.cpp
-ctp_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-ctp_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-ctp_cli_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# utb-cli binary #
+utb_cli_SOURCES = utb-cli.cpp
+utb_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+utb_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+utb_cli_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-ctp_cli_SOURCES += ctp-cli-res.rc
+utb_cli_SOURCES += utb-cli-res.rc
 endif
 
-ctp_cli_LDADD = \
+utb_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
-ctp_cli_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
+utb_cli_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
 #
 
-# ctp-tx binary #
-ctp_tx_SOURCES = ctp-tx.cpp
-ctp_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-ctp_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-ctp_tx_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# utb-tx binary #
+utb_tx_SOURCES = utb-tx.cpp
+utb_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+utb_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+utb_tx_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-ctp_tx_SOURCES += ctp-tx-res.rc
+utb_tx_SOURCES += utb-tx-res.rc
 endif
 
-ctp_tx_LDADD = \
+utb_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -581,22 +581,22 @@ ctp_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-ctp_tx_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
+utb_tx_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
 #
 
-# ctpconsensus library #
+# utbconsensus library #
 if BUILD_BITCOIN_LIBS
-include_HEADERS = script/ctpconsensus.h
-libctpconsensus_la_SOURCES = $(crypto_libctp_crypto_a_SOURCES) $(libctp_consensus_a_SOURCES)
+include_HEADERS = script/utbconsensus.h
+libutbconsensus_la_SOURCES = $(crypto_libutb_crypto_a_SOURCES) $(libutb_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libctpconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libutbconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libctpconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libctpconsensus_la_LIBADD = $(LIBSECP256K1) $(BLS_LIBS)
-libctpconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libctpconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libutbconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libutbconsensus_la_LIBADD = $(LIBSECP256K1) $(BLS_LIBS)
+libutbconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libutbconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -630,12 +630,12 @@ EXTRA_DIST = $(CTAES_DIST)
 EXTRA_DIST += $(IMMER_DIST)
 
 
-config/ctp-config.h: config/stamp-h1
+config/utb-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/ctp-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/utb-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/ctp-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/ctp-config.h.in
+$(top_srcdir)/$(subdir)/config/utb-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/utb-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

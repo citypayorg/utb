@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2019 The Ctp Core developers
+// Copyright (c) 2018-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -83,7 +83,7 @@ void CDKGPendingMessages::Clear()
 
 //////
 
-CDKGSessionHandler::CDKGSessionHandler(const Consensus::LLMQParams& _params, ctpl::thread_pool& _messageHandlerPool, CBLSWorker& _blsWorker, CDKGSessionManager& _dkgManager) :
+CDKGSessionHandler::CDKGSessionHandler(const Consensus::LLMQParams& _params, utbl::thread_pool& _messageHandlerPool, CBLSWorker& _blsWorker, CDKGSessionManager& _dkgManager) :
     params(_params),
     messageHandlerPool(_messageHandlerPool),
     blsWorker(_blsWorker),
@@ -95,7 +95,7 @@ CDKGSessionHandler::CDKGSessionHandler(const Consensus::LLMQParams& _params, ctp
     pendingPrematureCommitments((size_t)_params.size * 2)
 {
     phaseHandlerThread = std::thread([this] {
-        RenameThread(strprintf("ctp-q-phase-%d", (uint8_t)params.type).c_str());
+        RenameThread(strprintf("utb-q-phase-%d", (uint8_t)params.type).c_str());
         PhaseHandlerThread();
     });
 }

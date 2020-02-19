@@ -1,39 +1,39 @@
-Ctp Core 0.14.0
+Utb Core 0.14.0
 =====================
 
-This is the official reference wallet for Ctp digital currency and comprises the backbone of the Ctp peer-to-peer network. You can [download Ctp Core](https://www.citypay.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Utb digital currency and comprises the backbone of the Utb peer-to-peer network. You can [download Utb Core](https://www.jdjpay.org/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Ctp on your native platform.
+The following are some helpful notes on how to run Utb on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/ctp-qt` (GUI) or
-- `bin/ctpd` (headless)
+- `bin/utb-qt` (GUI) or
+- `bin/utbd` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run ctp-qt.exe.
+Unpack the files into a directory, and then run utb-qt.exe.
 
 ### OS X
 
-Drag Ctp-Qt to your applications folder, and then run Ctp-Qt.
+Drag Utb-Qt to your applications folder, and then run Utb-Qt.
 
 ### Need Help?
 
-* See the [Ctp documentation](https://docs.citypay.org)
+* See the [Utb documentation](https://docs.jdjpay.org)
 for help and more information.
-* See the [Ctp Developer Documentation](https://ctp-docs.github.io/) 
+* See the [Utb Developer Documentation](https://utb-docs.github.io/) 
 for technical specifications and implementation details.
-* Ask for help on [Ctp Nation Discord](http://ctpchat.org)
-* Ask for help on the [Ctp Forum](https://citypay.org/forum)
+* Ask for help on [Utb Nation Discord](http://utbchat.org)
+* Ask for help on the [Utb Forum](https://jdjpay.org/forum)
 
 Building
 ---------------------
-The following are developer notes on how to build Ctp Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Utb Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -43,7 +43,7 @@ The following are developer notes on how to build Ctp Core on your native platfo
 
 Development
 ---------------------
-The Ctp Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Utb Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
@@ -59,8 +59,8 @@ The Ctp Core repo's [root README](/README.md) contains relevant information on t
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [Ctp Forum](https://citypay.org/forum), in the Development & Technical Discussion board.
-* Discuss on [Ctp Nation Discord](http://ctpchat.org)
+* Discuss on the [Utb Forum](https://jdjpay.org/forum), in the Development & Technical Discussion board.
+* Discuss on [Utb Nation Discord](http://utbchat.org)
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

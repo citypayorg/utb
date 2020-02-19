@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 #include "random.h"
 #include "util.h"
 
-#include "ctp-config.h"
+#include "utb-config.h"
 
 #include <mutex>
 #include <map>

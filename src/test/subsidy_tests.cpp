@@ -1,11 +1,11 @@
-// Copyright (c) 2014-2018 The Ctp Core developers
+// Copyright (c) 2014-2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chainparams.h"
 #include "validation.h"
 
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 
 #include <boost/test/unit_test.hpp>
 

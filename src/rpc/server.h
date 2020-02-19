@@ -143,7 +143,7 @@ public:
 };
 
 /**
- * Ctp RPC command dispatcher.
+ * Utb RPC command dispatcher.
  */
 class CRPCTable
 {

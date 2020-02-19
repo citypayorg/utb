@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "addrman.h"
-#include "test/test_ctp.h"
+#include "test/test_utb.h"
 #include <string>
 #include <boost/test/unit_test.hpp>
 
@@ -180,7 +180,7 @@ BOOST_AUTO_TEST_CASE(addrman_select)
 
     // Add three addresses to new table.
     CService addr2 = ResolveService("250.3.1.1", 8333);
-    CService addr3 = ResolveService("112.157.65.160", 39999);
+    CService addr3 = ResolveService("112.157.65.160", 49999);
     CService addr4 = ResolveService("250.3.3.3", 9999);
 
     addrman.Add(CAddress(addr2, NODE_NONE), ResolveService("250.3.1.1", 8333));

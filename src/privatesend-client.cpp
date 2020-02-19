@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -25,7 +25,7 @@ CPrivateSendClientManager privateSendClient;
 void CPrivateSendClientManager::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fMasternodeMode) return;
-    if (fLiteMode) return; // ignore all Ctp related functionality
+    if (fLiteMode) return; // ignore all Utb related functionality
     if (!masternodeSync.IsBlockchainSynced()) return;
 
     if (!CheckDiskSpace()) {
@@ -132,7 +132,7 @@ void CPrivateSendClientManager::ProcessMessage(CNode* pfrom, const std::string& 
 void CPrivateSendClientSession::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
     if (fMasternodeMode) return;
-    if (fLiteMode) return; // ignore all Ctp related functionality
+    if (fLiteMode) return; // ignore all Utb related functionality
     if (!masternodeSync.IsBlockchainSynced()) return;
 
     if (strCommand == NetMsgType::DSSTATUSUPDATE) {
@@ -1707,7 +1707,7 @@ void CPrivateSendClientManager::UpdatedBlockTip(const CBlockIndex* pindex)
 
 void CPrivateSendClientManager::DoMaintenance(CConnman& connman)
 {
-    if (fLiteMode) return;       // disable all Ctp specific functionality
+    if (fLiteMode) return;       // disable all Utb specific functionality
     if (fMasternodeMode) return; // no client-side mixing on masternodes
 
     if (!masternodeSync.IsBlockchainSynced() || ShutdownRequested())

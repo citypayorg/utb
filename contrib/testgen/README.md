@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven Ctp tests.
+Utilities to generate test vectors for the data-driven Utb tests.
 
 Usage: 
 

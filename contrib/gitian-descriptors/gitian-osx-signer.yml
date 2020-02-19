@@ -1,5 +1,5 @@
 ---
-name: "ctp-dmg-signer"
+name: "utb-dmg-signer"
 suites:
 - "bionic"
 architectures:
@@ -7,10 +7,10 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/ctppay/ctp-detached-sigs.git"
+- "url": "https://github.com/utbpay/utb-detached-sigs.git"
   "dir": "signature"
 files:
-- "ctpcore-osx-unsigned.tar.gz"
+- "utbcore-osx-unsigned.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
@@ -27,8 +27,8 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=ctpcore-osx-unsigned.tar.gz
-  SIGNED=ctpcore-osx-signed.dmg
+  UNSIGNED=utbcore-osx-unsigned.tar.gz
+  SIGNED=utbcore-osx-signed.dmg
 
   tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"

@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_EVODB_H
-#define CTP_EVODB_H
+#ifndef UTB_EVODB_H
+#define UTB_EVODB_H
 
 #include "dbwrapper.h"
 #include "sync.h"
@@ -88,4 +88,4 @@ public:
 
 extern CEvoDB* evoDb;
 
-#endif //CTP_EVODB_H
+#endif //UTB_EVODB_H

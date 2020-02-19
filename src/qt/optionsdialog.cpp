@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ctp-config.h"
+#include "config/utb-config.h"
 #endif
 
 #include "optionsdialog.h"

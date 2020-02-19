@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Ctp-Qt</string>
+  <string>Utb-Qt</string>
 
   <key>CFBundleName</key>
-  <string>Ctp-Qt</string>
+  <string>Utb-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.ctp.Ctp-Qt</string>
+  <string>org.utb.Utb-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.ctp.CtpPayment</string>
+      <string>org.utb.UtbPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>ctp</string>
+        <string>utb</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.ctp.paymentrequest</string>
+      <string>org.utb.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Ctp payment request</string>
+      <string>Utb payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-ctp-payment-request</string>
+        <string>application/x-utb-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>ctppaymentrequest</string>
+          <string>utbpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.ctp.paymentrequest</string>
+        <string>org.utb.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

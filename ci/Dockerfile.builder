@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y python3-pip
 # Python stuff
 RUN pip3 install pyzmq # really needed?
 
-# ctp_hash
-RUN git clone https://github.com/ctppay/ctp_hash
-RUN cd ctp_hash && python3 setup.py install
+# utb_hash
+RUN git clone https://github.com/utbpay/utb_hash
+RUN cd utb_hash && python3 setup.py install
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
@@ -25,8 +25,8 @@ ARG GROUP_ID=1000
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID}
 ENV GROUP_ID ${GROUP_ID}
-RUN groupadd -g ${GROUP_ID} ctp
-RUN useradd -u ${USER_ID} -g ctp -s /bin/bash -m -d /ctp ctp
+RUN groupadd -g ${GROUP_ID} utb
+RUN useradd -u ${USER_ID} -g utb -s /bin/bash -m -d /utb utb
 
 # Extra packages
 ARG BUILD_TARGET=linux64
@@ -44,13 +44,13 @@ RUN \
   update-alternatives --set x86_64-w64-mingw32-g++  /usr/bin/x86_64-w64-mingw32-g++-posix; \
   exit 0
 
-RUN mkdir /ctp-src && \
+RUN mkdir /utb-src && \
   mkdir -p /cache/ccache && \
   mkdir /cache/depends && \
   mkdir /cache/sdk-sources && \
-  chown $USER_ID:$GROUP_ID /ctp-src && \
+  chown $USER_ID:$GROUP_ID /utb-src && \
   chown $USER_ID:$GROUP_ID /cache && \
   chown $USER_ID:$GROUP_ID /cache -R
-WORKDIR /ctp-src
+WORKDIR /utb-src
 
-USER ctp
+USER utb

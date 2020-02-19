@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Ctp Core developers
+// Copyright (c) 2018-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_QUORUMS_DKGSESSION_H
-#define CTP_QUORUMS_DKGSESSION_H
+#ifndef UTB_QUORUMS_DKGSESSION_H
+#define UTB_QUORUMS_DKGSESSION_H
 
 #include "consensus/params.h"
 #include "net.h"
@@ -344,4 +344,4 @@ void SetSimulatedDKGErrorRate(const std::string& type, double rate);
 
 }
 
-#endif //CTP_QUORUMS_DKGSESSION_H
+#endif //UTB_QUORUMS_DKGSESSION_H

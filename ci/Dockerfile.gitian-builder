@@ -10,8 +10,8 @@ ARG GROUP_ID=1000
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID}
 ENV GROUP_ID ${GROUP_ID}
-RUN groupadd -g ${GROUP_ID} ctp
-RUN useradd -u ${USER_ID} -g ctp -s /bin/bash -m -d /ctp ctp
+RUN groupadd -g ${GROUP_ID} utb
+RUN useradd -u ${USER_ID} -g utb -s /bin/bash -m -d /utb utb
 
-WORKDIR /ctp
-USER ctp
+WORKDIR /utb
+USER utb

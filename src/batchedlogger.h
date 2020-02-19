@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The Ctp Core developers
+// Copyright (c) 2018-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_BATCHEDLOGGER_H
-#define CTP_BATCHEDLOGGER_H
+#ifndef UTB_BATCHEDLOGGER_H
+#define UTB_BATCHEDLOGGER_H
 
 #include "tinyformat.h"
 
@@ -29,4 +29,4 @@ public:
     void Flush();
 };
 
-#endif//CTP_BATCHEDLOGGER_H
+#endif//UTB_BATCHEDLOGGER_H

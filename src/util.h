@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #define BITCOIN_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/ctp-config.h"
+#include "config/utb-config.h"
 #endif
 
 #include "compat.h"
@@ -36,14 +36,14 @@
 
 // Uncomment the following line to enable debugging messages
 // or enable on a per file basis prior to inclusion of util.h
-//#define ENABLE_CTP_DEBUG
-#ifdef ENABLE_CTP_DEBUG
+//#define ENABLE_UTB_DEBUG
+#ifdef ENABLE_UTB_DEBUG
 #define DBG( x ) x
 #else
 #define DBG( x ) 
 #endif
 
-//Ctp only features
+//Utb only features
 
 extern bool fMasternodeMode;
 extern bool fLiteMode;
@@ -246,17 +246,17 @@ int GetNumCores();
 void RenameThread(const char* name);
 std::string GetThreadName();
 
-namespace ctpl {
+namespace utbl {
     class thread_pool;
 }
-void RenameThreadPool(ctpl::thread_pool& tp, const char* baseName);
+void RenameThreadPool(utbl::thread_pool& tp, const char* baseName);
 
 /**
  * .. and a wrapper that just calls func once
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("ctp-%s", name);
+    std::string s = strprintf("utb-%s", name);
     RenameThread(s.c_str());
     try
     {

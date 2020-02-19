@@ -1,4 +1,4 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -63,7 +63,7 @@ void CBLSWorker::Start()
     int workerCount = std::thread::hardware_concurrency() / 2;
     workerCount = std::max(std::min(1, workerCount), 4);
     workerPool.resize(workerCount);
-    RenameThreadPool(workerPool, "ctp-bls-worker");
+    RenameThreadPool(workerPool, "utb-bls-worker");
 }
 
 void CBLSWorker::Stop()
@@ -134,7 +134,7 @@ struct Aggregator {
     std::shared_ptr<std::vector<const T*> > inputVec;
 
     bool parallel;
-    ctpl::thread_pool& workerPool;
+    utbl::thread_pool& workerPool;
 
     std::mutex m;
     // items in the queue are all intermediate aggregation results of finished batches.
@@ -153,7 +153,7 @@ struct Aggregator {
     Aggregator(const std::vector<TP>& _inputVec,
                size_t start, size_t count,
                bool _parallel,
-               ctpl::thread_pool& _workerPool,
+               utbl::thread_pool& _workerPool,
                DoneCallback _doneCallback) :
             workerPool(_workerPool),
             parallel(_parallel),
@@ -342,7 +342,7 @@ struct VectorAggregator {
     size_t start;
     size_t count;
     bool parallel;
-    ctpl::thread_pool& workerPool;
+    utbl::thread_pool& workerPool;
 
     std::atomic<size_t> doneCount;
 
@@ -351,7 +351,7 @@ struct VectorAggregator {
 
     VectorAggregator(const VectorVectorType& _vecs,
                      size_t _start, size_t _count,
-                     bool _parallel, ctpl::thread_pool& _workerPool,
+                     bool _parallel, utbl::thread_pool& _workerPool,
                      DoneCallback _doneCallback) :
             vecs(_vecs),
             parallel(_parallel),
@@ -422,7 +422,7 @@ struct ContributionVerifier {
     bool parallel;
     bool aggregated;
 
-    ctpl::thread_pool& workerPool;
+    utbl::thread_pool& workerPool;
 
     size_t batchCount;
     size_t verifyCount;
@@ -433,7 +433,7 @@ struct ContributionVerifier {
 
     ContributionVerifier(const CBLSId& _forId, const std::vector<BLSVerificationVectorPtr>& _vvecs,
                          const BLSSecretKeyVector& _skShares, size_t _batchSize,
-                         bool _parallel, bool _aggregated, ctpl::thread_pool& _workerPool,
+                         bool _parallel, bool _aggregated, utbl::thread_pool& _workerPool,
                          std::function<void(const std::vector<bool>&)> _doneCallback) :
         forId(_forId),
         vvecs(_vvecs),
@@ -632,7 +632,7 @@ BLSVerificationVectorPtr CBLSWorker::BuildQuorumVerificationVector(const std::ve
 }
 
 template <typename T>
-void AsyncAggregateHelper(ctpl::thread_pool& workerPool,
+void AsyncAggregateHelper(utbl::thread_pool& workerPool,
                           const std::vector<T>& vec, size_t start, size_t count, bool parallel,
                           std::function<void(const T&)> doneCallback)
 {

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2019 The Ctp Core developers
+// Copyright (c) 2014-2019 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -56,7 +56,7 @@ const std::string CInstantSend::SERIALIZATION_VERSION_STRING = "CInstantSend-Ver
 
 void CInstantSend::ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
-    if (fLiteMode) return; // disable all Ctp specific functionality
+    if (fLiteMode) return; // disable all Utb specific functionality
     if (!llmq::IsOldInstantSendEnabled()) return;
 
     // NOTE: NetMsgType::TXLOCKREQUEST is handled via ProcessMessage() in net_processing.cpp

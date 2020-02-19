@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between ctp-cli and ctpd)
- * of a given instance of the Ctp system.
+ * CBaseChainParams defines the base parameters (shared between utb-cli and utbd)
+ * of a given instance of the Utb system.
  */
 class CBaseChainParams
 {

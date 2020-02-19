@@ -1,15 +1,15 @@
-// Copyright (c) 2018 The Ctp Core developers
+// Copyright (c) 2018 The Utb Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CTP_QUORUMS_DKGSESSIONMGR_H
-#define CTP_QUORUMS_DKGSESSIONMGR_H
+#ifndef UTB_QUORUMS_DKGSESSIONMGR_H
+#define UTB_QUORUMS_DKGSESSIONMGR_H
 
 #include "llmq/quorums_dkgsessionhandler.h"
 
 #include "validation.h"
 
-#include "ctpl.h"
+#include "utbl.h"
 
 class UniValue;
 
@@ -23,7 +23,7 @@ class CDKGSessionManager
 private:
     CDBWrapper& llmqDb;
     CBLSWorker& blsWorker;
-    ctpl::thread_pool messageHandlerPool;
+    utbl::thread_pool messageHandlerPool;
 
     std::map<Consensus::LLMQType, CDKGSessionHandler> dkgSessionHandlers;
 
@@ -76,4 +76,4 @@ extern CDKGSessionManager* quorumDKGSessionManager;
 
 }
 
-#endif //CTP_QUORUMS_DKGSESSIONMGR_H
+#endif //UTB_QUORUMS_DKGSESSIONMGR_H

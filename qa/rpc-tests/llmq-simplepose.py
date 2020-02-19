@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# Copyright (c) 2015-2018 The Ctp Core developers
+# Copyright (c) 2015-2018 The Utb Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import CtpTestFramework
+from test_framework.test_framework import UtbTestFramework
 from test_framework.util import *
 from time import *
 
@@ -14,7 +14,7 @@ Checks simple PoSe system based on LLMQ commitments
 
 '''
 
-class LLMQSimplePoSeTest(CtpTestFramework):
+class LLMQSimplePoSeTest(UtbTestFramework):
     def __init__(self):
         super().__init__(6, 5, [], fast_dip3_enforcement=True)
 
