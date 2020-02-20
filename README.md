@@ -1,8 +1,7 @@
 Utb Core staging tree 0.14.0
 ===============================
 
-https://www.jdjpay.org
-
+https://utb.jdjpay.org
 
 -- ctp 를 ubt 로
 rename 's/ctp/ubt/g' ./*
@@ -10,8 +9,7 @@ rename 's/ctp/ubt/g' ./*
 -- ctp 를 utb 로 하위폴더
 find . -type f | grep -E "*" | xargs rename 's/ctp/utb/g' ./*
 
------------------linux
-
+-----------------linux-----------------
 cd citypay
 cd depends
 make HOST=x86_64-pc-linux-gnu -j4
@@ -19,7 +17,24 @@ cd ..
 ./autogen.sh # not required when building from tarball
 CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
 make
+--------------------------------------------------------------------
+우분투에서 마우스 매크로를 만들 필요가 생길 때가 있다.
+XMacro를 설치하면 매크로를 만들어서 원하는 동작을 자동으로 하도록 할 수 있다.
 
+sudo apt-get install xmacro
+
+설치가 다되면 다음 명령어를 통해 매크로를 기록한다.
+명령어를 입력한 후 특정키를 누르면 기록이 시작되고 그 키를 다시 누르면 기록이 종료된다.
+마우스 클릭이나 키보드 입력이 일어날 때마다 기록이 된다.
+xmacrorec2 > test.file
+기록을 끝내면 test.file 파일이 생기는데 이 파일을 열어서 수정하여 좀더 손을 볼 수 있다.
+실행은 다음 명령어로 한다.
+참고로 딱 한번만 실행된다.
+xmacroplay "$DISPLAY" < test.file
+반복해서 실행하기 위해 우분투 터미널에서 for문을 이용하면 된다.
+i<100으로 하면 100번 실행된다.
+for (( i=0; i<100; i++ )); do   xmacroplay "$DISPLAY" <test.file; done
+--------------------------------------------------------------------
 
 What is Utb?
 ----------------
