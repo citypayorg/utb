@@ -87,86 +87,7 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
     return genesis;
 }
 
-/**
- * Build the genesis block. Note that the output of its generation
- * transaction cannot be spent since it did not originally exist in the
- * database.
- *
- * CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
- *   CTransaction(hash=e0028e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
- *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
- *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
- *   vMerkleTree: e0028e
- */
-//##################################################################################
 /*
-2020-02-04 Genesis 
-2020-02-01 00:00:00 --> 1580482800 (DevNet,regtest) , 2020-02-02 00:00:00 --> 1580569200 (test) , 2020-02-03 00:00:00 --> 1580655600 (mainNet)
-==================================================================================================================================
-040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
-048240a8748a80a286b270ba126705ced4f2ce5a7847b3610ea3c06513150dade2a8512ed5ea86320824683fc0818f0ac019214973e677acd1244f6d0571fc5103
-===================================================================================================================================
- CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
- *   CTransaction(hash=e0028e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
- *     CTxIn(COutPoint(000000, -1), 
- coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
- *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
- *   vMerkleTree: e0028e
-===================================================================================================================================
-ChainTxData 1557610432    1580571756
-
--- 2020-02-03 00:00:00 --> 1580655600 (mainNet)
-===================================================================================================================================
-python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580655600 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
-
-04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
-algorithm: X11
-merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: renew for happy make for more crypto banking Service
-pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
-time: 1580655600
-bits: 0x1e0ffff0
-Searching for genesis hash..
-20338.0 hash/s, estimate: 58.7 hgenesis hash found!
-nonce: 30196654
-genesis hash: 000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419
-dev@ubuntu:~/UTB_Genesis$ 
-
-
---2020-02-02 00:00:00 --> 1580569200 (test)
-===================================================================================================================================
-python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580569200 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
-
-bcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
-04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
-algorithm: X11
-merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: renew for happy make for more crypto banking Service
-pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
-time: 1580569200
-bits: 0x1e0ffff0
-Searching for genesis hash..
-280154.0 hash/s, estimate: 4.3 hgenesis hash found!
-nonce: 29033547
-genesis hash: 00000844645831821cda4e384ba3282f9e0a7a3c3a133d23aaa2dbf504f92c88
-
---2020-02-01 00:00:00 --> 1580482800 (DevNet,regtest)
-===================================================================================================================================
-python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1580482800 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
-
-bcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
-04ffff001d01043e736f20686172642e2e2e62757420436974795061792e6f7267206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
-algorithm: X11
-merkle hash: 43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217
-pszTimestamp: renew for happy make for more crypto banking Service
-pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
-time: 1580482800
-bits: 0x1e0ffff0
-Searching for genesis hash..
-genesis hash found!
-nonce: 28922350
-genesis hash: 00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778
-
 
 */
 //##################################################################################
@@ -278,14 +199,60 @@ static Consensus::LLMQParams llmq400_85 = {
 
 
 /**
- * Main network
- */
-/**
- * What makes a good checkpoint block?
- * + Is surrounded by blocks with reasonable timestamps
- *   (no blocks before with a timestamp after, none after with
- *    timestamp before)
- * + Contains no strange transactions
+-- 2020-02-20 00:00:00 --> 1582124400 (mainNet)
+===================================================================================================================================
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1582124400 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+
+23690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+04ffff001d01043472656e657720666f72206861707079206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
+algorithm: X11
+merkle hash: e98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24
+pszTimestamp: renew for happy make for more crypto banking Service
+pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
+time: 1582124400
+bits: 0x1e0ffff0
+Searching for genesis hash..
+227588.0 hash/s, estimate: 5.2 hgenesis hash found!
+nonce: 29896425
+genesis hash: 00000022fa5ddce4a39faf5f26a6b0f9aff424bb178f6c36abadf7f2990a03d4
+
+
+--2020-02-19 00:00:00 --> 1582038000 (test)
+===================================================================================================================================
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1582038000 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+
+23690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+04ffff001d01043472656e657720666f72206861707079206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
+algorithm: X11
+merkle hash: e98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24
+pszTimestamp: renew for happy make for more crypto banking Service
+pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
+time: 1582038000
+bits: 0x1e0ffff0
+Searching for genesis hash..
+202623.0 hash/s, estimate: 5.9 hgenesis hash found!
+nonce: 29706020
+genesis hash: 00000e8ea2180b0a28a78f16a32fa74b047fb75bbd2f3081745b1bdc7d4b37a7
+
+
+
+--2020-02-18 00:00:00 --> 1581951600 (test)
+===================================================================================================================================
+python genesis.py -a X11 -z "renew for happy make for more crypto banking Service" -t 1581951600 -n 28917698 -v 5000000000 -p "040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+
+23690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9"
+04ffff001d01043472656e657720666f72206861707079206d616b6520666f72206d6f72652063727970746f2062616e6b696e672053657276696365
+algorithm: X11
+merkle hash: e98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24
+pszTimestamp: renew for happy make for more crypto banking Service
+pubkey: 040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9
+time: 1581951600
+bits: 0x1e0ffff0
+Searching for genesis hash..
+18552.0 hash/s, estimate: 64.3 hgenesis hash found!
+nonce: 31057074
+genesis hash: 000000a75b52e143563b08f9a800077cb157c1359af911ea729dcdff5c30196c
+
  */
 
 
@@ -383,15 +350,7 @@ public:
         nDefaultPort = 49999;
         nPruneAfterHeight = 100000;
 
-        // genesis = CreateGenesisBlock(1390095618, 28917698, 0x1e0ffff0, 1, 50 * COIN);
-        // consensus.hashGenesisBlock = genesis.GetHash();
-        // assert(consensus.hashGenesisBlock == uint256S("0x00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"));
-        // assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
-
-        // vSeeds.push_back(CDNSSeedData("dash.org", "dnsseed.dash.org"));
-        // vSeeds.push_back(CDNSSeedData("dashdot.io", "dnsseed.dashdot.io"));
-        // vSeeds.push_back(CDNSSeedData("masternode.io", "dnsseed.masternode.io"));
-        genesis = CreateGenesisBlock(1580655600, 30196654, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1582124400, 29896425, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 // LogPrintf("########### CMainParams() main start ##############\n");
 // LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
@@ -400,10 +359,10 @@ public:
 // LogPrintf("genesis.nTime = %u \n", genesis.nTime);
 // LogPrintf("genesis.nNonce = %u \n", genesis.nNonce);
 // LogPrintf("########### CMainParams() main end ##############\n");
-        assert(consensus.hashGenesisBlock == uint256S("0x000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419"));
-        assert(genesis.hashMerkleRoot     == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000022fa5ddce4a39faf5f26a6b0f9aff424bb178f6c36abadf7f2990a03d4"));
+        assert(genesis.hashMerkleRoot     == uint256S("0xe98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24"));
 
-        vSeeds.push_back(CDNSSeedData("jdjpay.org", "dnsseed.jdjpay.org"));
+        vSeeds.push_back(CDNSSeedData("utb.jdjpay.org", "dnsseed.utb.jdjpay.org"));
 
         // Dash addresses start with 'X'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);
@@ -446,13 +405,13 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x000005b385c60fff5a0e23d4de20b3475dbd79c4b3a0b81505408cbbacafb419"))
-            (  1500, uint256S("0x0000018f337046656c603759bb4b186c05c54e5786458fea5307b78af5db5cf5"))
-            (  4000, uint256S("0x00000166c70eea0d5084bacfb29f606d22a16f78269acf7cb7c8f594e73e20f1"))
+            ( 0, uint256S("0x00000022fa5ddce4a39faf5f26a6b0f9aff424bb178f6c36abadf7f2990a03d4"))
+            // (  1500, uint256S("0x0000018f337046656c603759bb4b186c05c54e5786458fea5307b78af5db5cf5"))
+            // (  4000, uint256S("0x00000166c70eea0d5084bacfb29f606d22a16f78269acf7cb7c8f594e73e20f1"))
         };
 
         chainTxData = ChainTxData{
-            1580655599, // * 1580655600 UNIX timestamp of last known number of transactions (Block 1068571)
+            1582124399, // * 1581951600 UNIX timestamp of last known number of transactions (Block 1068571)
             1,   // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.1         // * estimated number of transactions per second after that timestamp
@@ -553,21 +512,21 @@ public:
         nDefaultPort = 29999;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1580569200UL, 28917698UL, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1582038000UL, 29706020UL, 0x1e0ffff0, 1, 50 * COIN);
 // LogPrintf("########### CTestNetParams() main start ##############\n");
 // LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
 // LogPrintf("########### CTestNetParams() main end ##############\n");
 
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x00000844645831821cda4e384ba3282f9e0a7a3c3a133d23aaa2dbf504f92c88"));
-        assert(genesis.hashMerkleRoot == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
+        //assert(consensus.hashGenesisBlock == uint256S("0x00000e8ea2180b0a28a78f16a32fa74b047fb75bbd2f3081745b1bdc7d4b37a7"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24"));
 
         vFixedSeeds.clear();
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("test.dnsseed.jdjpay.org",  "testnet-seed.jdjpay.org"));
+        vSeeds.push_back(CDNSSeedData("test.dnsseed.utb.jdjpay.org",  "testnet-seed.utb.jdjpay.org"));
         //vSeeds.push_back(CDNSSeedData("masternode.io", "test.dnsseed.masternode.io"));
 
         // Testnet Dash addresses start with 'y'
@@ -609,15 +568,15 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (    261, uint256S("0x00000c26026d0815a7e2ce4fa270775f61403c040647ff2c3091f99e894a4618"))
-            (   1999, uint256S("0x00000052e538d27fa53693efe6fb6892a0c1d26c0235f599171c48a3cce553b1"))
-            (   2999, uint256S("0x0000024bc3f4f4cb30d29827c13d921ad77d2c6072e586c7f60d83c2722cdcc5"))
-            (  96090, uint256S("0x00000000033df4b94d17ab43e999caaf6c4735095cc77703685da81254d09bba"))
+            (    0, uint256S("0x00000e8ea2180b0a28a78f16a32fa74b047fb75bbd2f3081745b1bdc7d4b37a7"))
+            // (   1999, uint256S("0x00000052e538d27fa53693efe6fb6892a0c1d26c0235f599171c48a3cce553b1"))
+            // (   2999, uint256S("0x0000024bc3f4f4cb30d29827c13d921ad77d2c6072e586c7f60d83c2722cdcc5"))
+            // (  96090, uint256S("0x00000000033df4b94d17ab43e999caaf6c4735095cc77703685da81254d09bba"))
         };
 
         chainTxData = ChainTxData{
-            1557603759, // * UNIX timestamp of last known number of transactions (Block 96717)
-            968552,     // * total number of transactions between genesis and that timestamp
+            1582037999, // * UNIX timestamp of last known number of transactions (Block 96717)
+            1,     // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.01        // * estimated number of transactions per second after that timestamp
         };
@@ -714,17 +673,17 @@ public:
         pchMessageStart[2] = 0xff;
         pchMessageStart[3] = 0xce;
         vAlertPubKey = ParseHex("04517d8a699cb43d3938d7b24faaff7cda448ca4ea267723ba614784de661949bf632d6304316b244646dea079735b9a6fc4af804efb4752075b9fe2245e14e412");
-        nDefaultPort = 9999;
+        nDefaultPort = 29999;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1580482800, 1096447, 0x207fffff, 1, 50 * COIN);
-LogPrintf("########### CDevNetParams() main start ##############\n");
-LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-LogPrintf("########### CDevNetParams() main end ##############\n");
+        genesis = CreateGenesisBlock(1581951600, 31057074, 0x1e0ffff0, 1, 50 * COIN);
+// LogPrintf("########### CDevNetParams() main start ##############\n");
+// LogPrintf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+// LogPrintf("########### CDevNetParams() main end ##############\n");
 
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778"));
-        assert(genesis.hashMerkleRoot == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000a75b52e143563b08f9a800077cb157c1359af911ea729dcdff5c30196c"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24"));
 
         devnetGenesis = FindDevNetGenesisBlock(consensus, genesis, 50 * COIN);
         consensus.hashDevnetGenesisBlock = devnetGenesis.GetHash();
@@ -772,7 +731,7 @@ LogPrintf("########### CDevNetParams() main end ##############\n");
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (      0, uint256S("0x00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778"))
+            (      0, uint256S("0x000000a75b52e143563b08f9a800077cb157c1359af911ea729dcdff5c30196c"))
             (      1, devnetGenesis.GetHash())
         };
 
@@ -870,10 +829,10 @@ public:
         nDefaultPort = 19994;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1580482800, 28917698, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1581951600, 28917698, 0x207fffff, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778"));
-        assert(genesis.hashMerkleRoot == uint256S("0x43b877f7078add344380947380ffde37db3850a31f62a4c5caf1994b4c386217"));
+        //assert(consensus.hashGenesisBlock == uint256S("0x000000a75b52e143563b08f9a800077cb157c1359af911ea729dcdff5c30196c"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe98f889649cb99f43e76559e62fbdab5829d60f5e82a91da4f0676c7cbb24a24"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -896,7 +855,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0x00000df839dcb8283fafc7b4991893b20cc74b1208d74b57c5255b62aaa3f778"))
+            ( 0, uint256S("0x000000a75b52e143563b08f9a800077cb157c1359af911ea729dcdff5c30196c"))
         };
 
         chainTxData = ChainTxData{
