@@ -18,6 +18,15 @@ cd ..
 CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=/
 make
 --------------------------------------------------------------------
+-----------------win 64 bit ----------------------------
+cd depends
+make HOST=x86_64-w64-mingw32 -j4
+cd ..
+./autogen.sh
+CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+make
+-----------------------------------------------------
+
 우분투에서 마우스 매크로를 만들 필요가 생길 때가 있다.
 XMacro를 설치하면 매크로를 만들어서 원하는 동작을 자동으로 하도록 할 수 있다.
 
